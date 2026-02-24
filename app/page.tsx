@@ -8,7 +8,7 @@ export default function HomePage() {
       <header className="space-y-5 border-b border-[var(--line)] pb-10">
         <p className="text-sm text-[var(--muted)] [font-family:var(--font-mono)]">ellyess benmoufok</p>
         <h1 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
-          I build models that turn uncertainty into decisions
+          Computational science, energy systems, optimisation, and applied modelling.
         </h1>
         <p className="max-w-2xl text-base leading-relaxed text-[var(--muted)]">
           PhD candidate in Computational Science working across wind energy systems,
