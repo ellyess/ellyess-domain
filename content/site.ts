@@ -133,23 +133,23 @@ export const codeItems = [
   },
 ];
 
-// export const experimentItems = [
-//   {
-//     title: "DAO Treasury Stress Testing",
-//     summary: "Prototype simulation models for treasury allocation under volatility and governance constraints.",
-//     meta: "Web3",
-//   },
-//   {
-//     title: "Yield Strategy Constraint Sandbox",
-//     summary: "Small simulation notebooks and interfaces for comparing capital allocation heuristics.",
-//     meta: "DeFi",
-//   },
-//   {
-//     title: "Model Diagnostics Mini-Tools",
-//     summary: "Focused utilities for checking optimisation assumptions and solution sensitivity.",
-//     meta: "Systems",
-//   },
-// ];
+export const experimentItems = [
+  {
+    title: "DAO Treasury Stress Testing",
+    summary: "Prototype simulation models for treasury allocation under volatility and governance constraints.",
+    meta: "Web3",
+  },
+  {
+    title: "Yield Strategy Constraint Sandbox",
+    summary: "Small simulation notebooks and interfaces for comparing capital allocation heuristics.",
+    meta: "DeFi",
+  },
+  {
+    title: "Model Diagnostics Mini-Tools",
+    summary: "Focused utilities for checking optimisation assumptions and solution sensitivity.",
+    meta: "Systems",
+  },
+];
 
 
 
