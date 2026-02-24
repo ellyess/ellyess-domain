@@ -1,0 +1,5 @@
+- Project: minimalist systems-oriented personal portfolio for ellyess.com.
+- Keep UI dark, readable, and highly structured.
+- Avoid startup-style marketing language and unnecessary animations.
+- Prefer concise copy and explicit technical framing.
+- Keep implementation simple, maintainable, and static-first where possible.
