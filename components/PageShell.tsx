@@ -1,6 +1,7 @@
 type Item = {
   title: string;
   summary: string;
+  tech?: string;
   meta?: string;
   url?: string;
 };
@@ -30,6 +31,9 @@ export function PageShell({ title, intro, items, children }: PageShellProps) {
               ) : null}
             </div>
             <p className="mt-2 text-sm text-[var(--muted)]">{item.summary}</p>
+            {item.tech ? (
+              <p className="mt-2 text-xs text-[var(--muted)] italic">{item.tech}</p>
+            ) : null}
             {item.url ? (
               <a
                 href={item.url}

@@ -1,3 +1,9 @@
+export type ProfileLink = {
+  label: string;
+  href: string;
+  icon?: string;
+};
+
 export const principles = [
   "Formulate the system clearly.",
   "Optimise under real constraints.",
@@ -35,30 +41,36 @@ export const projects = [
   },
 ];
 
-export const profileLinks = [
+export const profileLinks: ProfileLink[] = [
   {
     label: "GitHub",
     href: "https://github.com/ellyess",
+    icon: "/profile-icons/github.png",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ellyessbenmoufok/",
+    icon: "/profile-icons/linkedin.png",
   },
   {
     label: "ORCID",
     href: "https://orcid.org/0009-0000-0337-5690",
+    icon: "/profile-icons/orcid.png",
   },
   {
     label: "ResearchGate",
     href: "https://www.researchgate.net/profile/Ellyess_Benmoufok2",
+    icon: "/profile-icons/researchgate.png",
   },
   {
     label: "Bandcamp",
     href: "https://ellyxss.bandcamp.com/",
+    icon: "/profile-icons/bandcamp.png",
   },
   {
     label: "SoundCloud",
     href: "https://soundcloud.com/ellyxss",
+    icon: "/profile-icons/soundcloud.png",
   },
 ];
 
@@ -115,21 +127,35 @@ export const researchItems = [
 export const codeItems = [
   {
     title: "PyVWF",
-    summary: "Python tooling for wind-focused computational workflows and model development.",
+    summary:
+      "Modular wind farm simulation and bias-correction framework for reanalysis-driven power modelling.",
+    tech: "Python · NumPy · Pandas · Xarray · SciPy · Dask · ERA5 · Snakemake",
     meta: "GitHub",
     url: "https://github.com/ellyess/PyVWF",
   },
   {
     title: "PyPSA-Eur-Wind",
-    summary: "Energy systems optimisation extensions and scenario workflows around the PyPSA-Eur ecosystem.",
+    summary:
+      "Energy systems optimisation extensions integrating advanced wind modelling into the PyPSA-Eur ecosystem.",
+    tech: "Python · PyPSA · Atlite · Snakemake · Gurobi · Geospatial workflows",
     meta: "GitHub",
     url: "https://github.com/ellyess/pypsa-eur-wind",
   },
   {
     title: "OBK Gear Optimiser",
-    summary: "Applied optimisation web tool translating constrained search into practical recommendations.",
-    meta: "GitHub",
-    url: "https://github.com/ellyess/OBK-Gear-Optimiser",
+    summary:
+      "Constrained optimisation web app translating search algorithms into practical gear recommendations.",
+    tech: "Python · Streamlit · Pandas · Optimisation algorithms",
+    meta: "Web App",
+    url: "https://obk-gear-optimiser.streamlit.app/",
+  },
+  {
+    title: "OBK Guild Territory Tracker",
+    summary:
+      "Lightweight web app for tracking and visualising guild territory activity.",
+    tech: "JavaScript · HTML · CSS · GitHub Pages",
+    meta: "Web App",
+    url: "https://ellyess.github.io/OBK-Swax-GT/",
   },
 ];
 

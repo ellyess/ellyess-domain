@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { OrbitNav } from "@/components/OrbitNav";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
-import { Nav } from "@/components/Nav";
 import "./globals.css";
 
 const sans = IBM_Plex_Sans({
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/icon.svg",
-    apple: "/apple-icon.svg",
+    icon: "/page-icon.png",
+    apple: "/page-icon.png",
   },
 };
 
@@ -68,9 +68,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
-        <div className="mx-auto max-w-4xl px-6 py-10 md:py-14">
-          <Nav />
-          {children}
+        <div className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-8">
+            {children}
+            <OrbitNav />
+          </div>
         </div>
       </body>
     </html>

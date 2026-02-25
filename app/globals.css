@@ -18,3 +18,47 @@ body {
 * {
   border-color: var(--line);
 }
+
+@keyframes orbitFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbitFloatX {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.orbit-label {
+  animation-duration: 7.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.orbit-label-y {
+  animation-name: orbitFloat;
+}
+
+.orbit-label-x {
+  animation-name: orbitFloatX;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-label {
+    animation: none;
+  }
+}
