@@ -3,317 +3,336 @@ import { projects } from "@/content/site";
 
 export default function HomePage() {
   return (
-    <main className="space-y-14">
-      <header className="space-y-5 border-b border-[var(--line)] pb-10">
-        <h1 className="max-w-3xl text-[var(--muted)] [font-family:var(--font-mono)] leading-tight md:text-4xl">
-            Ellyess Benmoufok
+    <main className="space-y-20">
+      {/* —— Hero —— */}
+      <header className="space-y-7 pt-2">
+        <p className="eyebrow">Computational scientist · Research software engineer</p>
+        <h1 className="display text-6xl md:text-8xl text-[var(--text)] leading-[0.92]">
+          Ellyess <span className="display-light text-[var(--muted)]">Benmoufok</span>
         </h1>
-        <p className="max-w-2xl text-base leading-relaxed text-[var(--muted)]">
-            Computational scientist and research software engineer. PhD at Imperial College London on
-            data science-enhanced wind power modelling — reanalysis bias correction, spatiotemporal
-            pipelines, and integration into continental-scale energy system optimisation (PyPSA-Eur).
-            I build modular scientific Python systems with an emphasis on reproducibility, performance,
-            and clear handoff between simulation and decision models.
+        <p className="max-w-2xl text-[15px] leading-relaxed text-[var(--muted)]">
+          PhD researcher at Imperial College London working on
+          {" "}
+          <span className="text-[var(--text)]">data science-enhanced wind power modelling</span>
+          {" "}
+          — reanalysis bias correction, spatiotemporal pipelines, and integration into
+          continental-scale energy system optimisation (PyPSA-Eur). I build modular scientific
+          Python systems with an emphasis on reproducibility, performance, and clear handoff
+          between simulation and decision models.
         </p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
+          <a href="mailto:benmoufok.ellyess@gmail.com" className="link-arrow">
+            Get in touch
+          </a>
+          <a href="/research" className="link-arrow">
+            View research
+          </a>
+        </div>
       </header>
 
-      <Section title="Education">
-        <div className="space-y-3">
-          <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h3 className="text-base font-medium">PhD in Computational Science</h3>
-              <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">Oct 2021 – Present</span>
-            </div>
-            <p className="mt-2 text-sm text-[var(--muted)]">Imperial College London</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-              <li>Architected modular scientific Python frameworks for wind farm simulation.</li>
-              <li>Built scalable pipelines for large spatiotemporal datasets (ERA5).</li>
-              <li>Implemented clustering, bias correction, and validation algorithms.</li>
-              <li>Integrated simulation systems into PyPSA-based optimisation models.</li>
-              <li>Emphasised reproducibility, performance, and maintainability.</li>
-            </ul>
-          </article>
-
-        <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-base font-medium">
-            MSc in Applied Computational Science and Engineering
-            </h3>
-            <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">
-            Oct 2019 – Oct 2020
-            </span>
-        </div>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Imperial College London
-        </p>
-
-        <p className="mt-1 text-xs text-[var(--muted)] [font-family:var(--font-mono)]">
-            Distinction
-        </p>
-
-        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-            <li>Developed numerical and optimisation algorithms in Python and C++ for scientific computing applications.</li>
-            <li>Completed advanced coursework in dynamical systems, numerical methods, inversion, and parallel programming.</li>
-            <li>Co-authored research on generative adversarial networks (MOR-GANs) for multi-output regression in scientific data.</li>
-            <li>Built a foundation in high-performance and reproducible computational workflows.</li>
-        </ul>
-        </article>
-
-        <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-base font-medium">
-            BSc in Physics
-            </h3>
-            <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">
-            Sep 2015 – Jun 2018
-            </span>
-        </div>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            University of Surrey
-        </p>
-
-        <p className="mt-1 text-xs text-[var(--muted)] [font-family:var(--font-mono)]">
-            First Class Honours
-        </p>
-
-        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-            <li>Built strong foundations in mathematical modelling, numerical analysis, and physical systems.</li>
-            <li>Applied computational techniques (including Fortran and Python) to scientific problem-solving.</li>
-            <li>Developed early interest in scientific computing and simulation-based research.</li>
-        </ul>
-        </article>
+      {/* —— Education —— */}
+      <Section number="01" title="Education" kicker="2015 — 2026">
+        <div className="space-y-px">
+          <EducationCard
+            degree="PhD, Computational Science"
+            institution="Imperial College London"
+            period="Oct 2021 — 2026"
+            note="Department of Earth Science and Engineering"
+            bullets={[
+              "Developed PyVWF — modular wind simulation and reanalysis bias-correction tooling.",
+              "Built scalable ERA5 spatiotemporal pipelines integrated into PyPSA-Eur optimisation studies.",
+              "Published peer-reviewed work on high-resolution wind bias correction.",
+            ]}
+          />
+          <EducationCard
+            degree="MSc, Applied Computational Science and Engineering"
+            institution="Imperial College London"
+            period="Oct 2019 — Oct 2020"
+            note="Distinction"
+            bullets={[
+              "Numerical methods, optimisation, and parallel programming in Python and C++.",
+              "Research project on multi-output regression with GANs (co-authored publication).",
+            ]}
+          />
+          <EducationCard
+            degree="BSc, Physics"
+            institution="University of Surrey"
+            period="Sep 2015 — Jun 2018"
+            note="First Class Honours"
+            bullets={[
+              "Foundations in mathematical modelling, numerical analysis, and physical systems.",
+              "Applied computational techniques (Fortran, Python) to scientific problem-solving.",
+            ]}
+          />
         </div>
       </Section>
 
-      <Section title="Experience">
-        <div className="space-y-3">
-          <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h3 className="text-base font-medium">Graduate Teaching Assistant</h3>
-              <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">Oct 2020 – Oct 2024</span>
-            </div>
-            <p className="mt-2 text-sm text-[var(--muted)]">Imperial College London</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-              <li>Supported teaching of computational and numerical methods.</li>
-              <li>Helped students with Python, modelling, and scientific computing.</li>
-            </ul>
-          </article>
+      {/* —— Experience —— */}
+      <Section number="02" title="Experience" kicker="2019 — present">
+        <div className="space-y-px">
+          <ExperienceCard
+            role="Graduate Teaching Assistant"
+            org="Imperial College London"
+            period="Oct 2020 — Oct 2024"
+            bullets={[
+              "Supported teaching and assessment across computational science modules.",
+            ]}
+          />
+          <ExperienceCard
+            role="Data Science Intern"
+            org="Shell"
+            period="Jun 2021 — Sep 2021"
+            bullets={[
+              "Applied data science methods to energy-relevant datasets; delivered analysis and prototypes.",
+            ]}
+          />
+          <ExperienceCard
+            role="App Developer"
+            org="Imperial College London"
+            period="Dec 2020 — Mar 2021"
+            bullets={[
+              "Built geospatial metrics and ML-driven spatial analyses on Google Earth Engine.",
+            ]}
+          />
+          <ExperienceCard
+            role="Data Scientist"
+            org="Link Humans"
+            period="Jan 2019 — Aug 2019"
+            bullets={[
+              "Analysed raw data and surfaced trends informing employer branding strategy.",
+            ]}
+          />
+        </div>
+      </Section>
 
-          <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h3 className="text-base font-medium">Data Science Intern</h3>
-              <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">Jun 2021 – Sep 2021</span>
-            </div>
-            <p className="mt-2 text-sm text-[var(--muted)]">Shell</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-              <li>Built machine learning models for energy analytics.</li>
-              <li>Processed large-scale geospatial and operational datasets.</li>
-            </ul>
-          </article>
+      {/* —— Publications —— */}
+      <Section number="03" title="Selected Publications" kicker="Peer-reviewed">
+        <div className="space-y-px">
+          <PublicationCard
+            title="Geographic variability in reanalysis wind speed biases: A high-resolution bias correction approach for UK wind energy"
+            authors={(
+              <>
+                Wang, Y., Warder, S., <Strong>Benmoufok, E.F.</Strong>, Wynn, A., Buxton, O.R.H.,
+                Staffell, I., &amp; Piggott, M.D.
+              </>
+            )}
+            venue="Energy Conversion & Management · 2026"
+            cite="Energy Conversion and Management, 352, 121066."
+            note="Extends the multi-country high-resolution bias correction framework PyVWF."
+            url="https://doi.org/10.1016/j.enconman.2026.121066"
+          />
+          <PublicationCard
+            title="Improving wind power modelling through granular spatial and temporal bias correction of reanalysis data"
+            authors={(
+              <>
+                <Strong>Benmoufok, E.F.</Strong>, Warder, S., Zhu, E., Bhaskaran, B., Staffell, I.,
+                &amp; Piggott, M.D.
+              </>
+            )}
+            venue="Energy · 2024"
+            cite="Energy, 313, 133759."
+            note="Lead-author study introducing PyVWF — a multi-country high-resolution bias correction framework for reanalysis-driven wind power modelling."
+            url="https://doi.org/10.1016/j.energy.2024.133759"
+          />
+          <PublicationCard
+            title="Multi-Output Regression with Generative Adversarial Networks (MOR-GANs)"
+            authors={(
+              <>
+                Phillips, T.R.F., Heaney, C.E., <Strong>Benmoufok, E.</Strong>, Li, Q., Hua, L.,
+                Porter, A.E., Chung, K.F., &amp; Pain, C.C.
+              </>
+            )}
+            venue="Applied Sciences · 2022"
+            cite="Applied Sciences, 12(18), 9209."
+            note="Co-authored study developing GAN approaches for multi-output regression in scientific modelling."
+            url="https://doi.org/10.3390/app12189209"
+          />
+        </div>
+      </Section>
 
-          <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h3 className="text-base font-medium">App Developer</h3>
-              <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">Dec 2020 – Mar 2021</span>
-            </div>
-            <p className="mt-2 text-sm text-[var(--muted)]">Imperial College London</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--muted)]">
-              <li>Built geospatial ML tools using Google Earth Engine.</li>
-              <li>Designed spatial analytics pipelines in JavaScript.</li>
-            </ul>
+      {/* —— Stack —— */}
+      <Section number="04" title="Technical Stack" kicker="Working tools">
+        <div className="card grid grid-cols-1 gap-px md:grid-cols-2">
+          <StackRow label="Languages" value="Python · JavaScript · C++ · Fortran · GDScript" />
+          <StackRow label="Scientific" value="NumPy · Pandas · Xarray · SciPy · Dask" />
+          <StackRow label="Energy / Optimisation" value="PyPSA · PyPSA-Eur · Atlite · Gurobi" />
+          <StackRow label="Geo / Climate" value="GeoPandas · Shapely · Rasterio · ERA5" />
+          <StackRow label="Workflow" value="Snakemake · Conda · Git · GitHub" />
+          <StackRow label="Writing" value="LaTeX · Matplotlib" />
+        </div>
+      </Section>
+
+      {/* —— Beyond Research —— */}
+      <Section number="05" title="Beyond Research" kicker="Creative practice">
+        <div className="space-y-px">
+          <article className="card px-6 py-6">
+            <p className="text-sm leading-relaxed text-[var(--muted)]">
+              Outside computational energy modelling, I work on real-time audio-visual systems
+              and creative coding — generative visuals in TouchDesigner and music production in
+              Ableton Live, oriented toward interactive and performance-driven workflows.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
+              I&apos;m also developing{" "}
+              <span className="display-medium text-[var(--text)]">Fool&apos;s Ascension</span>
+              {" "}— a roguelite card game built on Russian Durak. Branching 3-act runs,
+              persistent meta-progression, and tightly-systemised encounter design in Godot.
+            </p>
           </article>
         </div>
       </Section>
 
-      <Section title="Publications">
-        <div className="space-y-3">
-        <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-base font-medium">
-            Geographic variability in reanalysis wind speed biases: A high-resolution bias correction approach for UK wind energy
-            </h3>
-            <span className="text-xs text-[var(--muted)]">Energy Conversion & Management · 2026</span>
-        </div>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Wang, Y., Warder, S., <span className="font-medium text-[var(--text)]">Benmoufok, E.F.</span>, 
-            Wynn, A., Buxton, O.R.H., Staffell, I., & Piggott, M.D.
-        </p>
-
-        <p className="mt-1 text-sm text-[var(--muted)] italic">
-            Energy Conversion and Management, 352, 121066.
-        </p>
-        
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Study further developing the multi-country high-resolution bias correction framework PyvWF. 
-        </p>
-        <p className="mt-2 text-sm">
-            <a 
-            href="https://doi.org/10.1016/j.enconman.2026.121066"
-            target="_blank"
-            className="text-[var(--accent)] hover:underline"
-            >
-            View publication →
-            </a>
-        </p>
-        </article>
-
-        <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-base font-medium">
-            Improving wind power modelling through granular spatial and temporal bias correction of reanalysis data
-            </h3>
-            <span className="text-xs text-[var(--muted)]">
-            Energy · 2024
-            </span>
-        </div>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            <span className="font-medium text-[var(--text)]">
-            Benmoufok, E.F.
-            </span>, Warder, S., Zhu, E., Bhaskaran, B., Staffell, I., & Piggott, M.D.
-        </p>
-
-        <p className="mt-1 text-sm text-[var(--muted)] italic">
-            Energy, 313, 133759.
-        </p>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Lead-author study developing a multi-country high-resolution bias correction framework 
-            for reanalysis-driven wind power modelling, PyVWF.
-        </p>
-
-        <p className="mt-2 text-sm">
-            <a 
-            href="https://doi.org/10.1016/j.energy.2024.133759"
-            target="_blank"
-            className="text-[var(--accent)] hover:underline"
-            >
-            View publication →
-            </a>
-        </p>
-        </article>
-
-        <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-base font-medium">
-            Multi-Output Regression with Generative Adversarial Networks (MOR-GANs)
-            </h3>
-            <span className="text-xs text-[var(--muted)]">
-            Applied Sciences · 2022
-            </span>
-        </div>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Phillips, T.R.F., Heaney, C.E., 
-            <span className="font-medium text-[var(--text)]">
-            Benmoufok, E.
-            </span>, 
-            Li, Q., Hua, L., Porter, A.E., Chung, K.F., & Pain, C.C.
-        </p>
-
-        <p className="mt-1 text-sm text-[var(--muted)] italic">
-            Applied Sciences, 12(18), 9209.
-        </p>
-
-        <p className="mt-2 text-sm text-[var(--muted)]">
-            Co-authored study developing generative adversarial network (GAN) approaches 
-            for multi-output regression in scientific modelling applications.
-        </p>
-
-        <p className="mt-2 text-sm">
-            <a 
-            href="https://doi.org/10.3390/app12189209"
-            target="_blank"
-            className="text-[var(--accent)] hover:underline"
-            >
-            View publication →
-            </a>
-        </p>
-        </article>
-        </div>
-      </Section>
-
-    <Section title="Technical Stack">
-    <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <div className="grid gap-2 text-sm text-[var(--muted)]">
-        
-        <p>
-            <span className="text-[var(--text)]">Languages:</span>{" "}
-            Python · JavaScript · C++ · Fortran · GDScript
-        </p>
-
-        <p>
-            <span className="text-[var(--text)]">Scientific Computing:</span>{" "}
-            NumPy · Pandas · Xarray · SciPy · Dask
-        </p>
-
-        <p>
-            <span className="text-[var(--text)]">Energy Systems & Optimisation:</span>{" "}
-            PyPSA · Atlite · Gurobi · Large-scale LP optimisation
-        </p>
-
-        <p>
-            <span className="text-[var(--text)]">Geospatial & Climate Data:</span>{" "}
-            GeoPandas · Shapely · Rasterio · ERA5 workflows
-        </p>
-
-        <p>
-            <span className="text-[var(--text)]">Workflow & Reproducibility:</span>{" "}
-            Snakemake · Conda · Git · GitHub
-        </p>
-
-        <p>
-            <span className="text-[var(--text)]">Visualisation & Reporting:</span>{" "}
-            Matplotlib · LaTeX
-        </p>
-
-        </div>
-    </article>
-    </Section>
-
-    <Section title="Beyond Research">
-    <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
-        <p className="text-sm text-[var(--muted)] leading-relaxed">
-        Outside of computational energy modelling, I explore real-time audio-visual systems and creative coding.
-        My work includes generative visual design using TouchDesigner and music production in Ableton Live,
-        focusing on interactive and performance-driven workflows.
-        </p>
-        <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
-        I&apos;m also developing <span className="text-[var(--text)]">Fool&apos;s Ascension</span>,
-        a roguelite card game built on Russian Durak — branching 3-act runs, persistent meta-progression,
-        and tightly-systemised encounter design in Godot.
-        </p>
-    </article>
-    </Section>
-
-      <Section title="Selected Work">
-        <div className="space-y-3">
-          {projects.map((project) => (
-            <article key={project.title} className="border border-[var(--line)] bg-[var(--surface)] p-4">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <h3 className="text-lg font-medium">{project.title}</h3>
-                <span className="text-xs text-[var(--muted)] [font-family:var(--font-mono)]">
-                  {project.kind}
+      {/* —— Selected Work —— */}
+      <Section number="06" title="Selected Work" kicker="Projects & artefacts">
+        <div className="space-y-px">
+          {projects.map((project, i) => (
+            <article key={project.title} className="card card-accent group grid grid-cols-1 gap-4 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)_auto] md:items-baseline md:gap-8">
+              <div className="flex items-baseline gap-3 md:flex-col md:items-start md:gap-2">
+                <span className="eyebrow text-[var(--subtle)]">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
+                <span className="eyebrow text-[var(--muted)]">{project.kind}</span>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{project.summary}</p>
+              <div className="space-y-2">
+                <h3 className="display text-xl md:text-2xl text-[var(--text)]">{project.title}</h3>
+                <p className="text-sm leading-relaxed text-[var(--muted)] max-w-2xl">
+                  {project.summary}
+                </p>
+              </div>
               {project.url ? (
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 inline-block text-xs text-[var(--accent)] [font-family:var(--font-mono)]"
+                  className="card-link link-arrow self-start md:self-center"
+                  aria-label={`Open ${project.title}`}
                 >
-                  Open link ↗
+                  Open
                 </a>
               ) : null}
             </article>
           ))}
         </div>
       </Section>
+
+      <footer className="pt-8 pb-4">
+        <p className="eyebrow text-[var(--subtle)]">
+          © {new Date().getFullYear()} Ellyess Benmoufok · London
+        </p>
+      </footer>
     </main>
+  );
+}
+
+function Strong({ children }: { children: React.ReactNode }) {
+  return <span className="font-medium text-[var(--text)]">{children}</span>;
+}
+
+function EducationCard({
+  degree,
+  institution,
+  period,
+  note,
+  bullets,
+}: {
+  degree: string;
+  institution: string;
+  period: string;
+  note?: string;
+  bullets: string[];
+}) {
+  return (
+    <article className="card grid grid-cols-1 gap-3 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8">
+      <div className="space-y-1">
+        <p className="eyebrow text-[var(--muted)]">{period}</p>
+        {note ? <p className="eyebrow text-[var(--subtle)]">{note}</p> : null}
+      </div>
+      <div className="space-y-3">
+        <div>
+          <h3 className="display text-xl md:text-[22px] text-[var(--text)]">{degree}</h3>
+          <p className="mt-1 text-sm text-[var(--muted)]">{institution}</p>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--muted)] marker:text-[var(--subtle)]">
+          {bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
+
+function ExperienceCard({
+  role,
+  org,
+  period,
+  bullets,
+}: {
+  role: string;
+  org: string;
+  period: string;
+  bullets: string[];
+}) {
+  return (
+    <article className="card grid grid-cols-1 gap-3 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8">
+      <p className="eyebrow text-[var(--muted)]">{period}</p>
+      <div className="space-y-3">
+        <div>
+          <h3 className="display text-xl md:text-[22px] text-[var(--text)]">{role}</h3>
+          <p className="mt-1 text-sm text-[var(--muted)]">{org}</p>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--muted)] marker:text-[var(--subtle)]">
+          {bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
+
+function PublicationCard({
+  title,
+  authors,
+  venue,
+  cite,
+  note,
+  url,
+}: {
+  title: string;
+  authors: React.ReactNode;
+  venue: string;
+  cite: string;
+  note: string;
+  url: string;
+}) {
+  return (
+    <article className="card card-accent group grid grid-cols-1 gap-3 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8">
+      <p className="eyebrow text-[var(--muted)]">{venue}</p>
+      <div className="space-y-3">
+        <h3 className="display text-lg md:text-xl text-[var(--text)] leading-snug">
+          {title}
+        </h3>
+        <p className="text-sm text-[var(--muted)]">{authors}</p>
+        <p className="text-xs italic text-[var(--subtle)]">{cite}</p>
+        <p className="text-sm leading-relaxed text-[var(--muted)]">{note}</p>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="link-arrow inline-flex pt-1"
+        >
+          View publication
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function StackRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-b border-r border-[var(--line)] px-5 py-4 last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:[&:nth-child(2n)]:border-r-0">
+      <p className="eyebrow text-[var(--subtle)]">{label}</p>
+      <p className="mt-1.5 text-sm text-[var(--text)]">{value}</p>
+    </div>
   );
 }

@@ -5,7 +5,8 @@ export default function ResearchPage() {
   return (
     <PageShell
       title="Research"
-      intro="Research in computational science with focus on wind energy systems, optimisation formulation, and robust modelling workflows."
+      kicker="Computational science"
+      intro="Wind energy systems, reanalysis bias correction, and the integration of physical modelling into continental-scale energy system optimisation."
       items={researchItems}
     />
   );

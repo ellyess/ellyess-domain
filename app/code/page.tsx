@@ -5,7 +5,8 @@ export default function CodePage() {
   return (
     <PageShell
       title="Code"
-      intro="Implementation work focused on scientific computing, optimisation pipelines, and production-minded technical tooling."
+      kicker="Implementation"
+      intro="Scientific computing, optimisation pipelines, and production-minded technical tooling. Open source where possible."
       items={codeItems}
     />
   );

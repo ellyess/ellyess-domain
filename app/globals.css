@@ -1,46 +1,158 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b0d10;
-  --surface: #11151a;
-  --text: #e6eaf0;
-  --muted: #a7b0bd;
-  --line: #222933;
-  --accent: #7aa2f7;
+  /* Warm neutral palette — off-black background, off-white text */
+  --bg: #0a0a0c;
+  --bg-elev: #111114;
+  --surface: rgba(255, 255, 255, 0.018);
+  --surface-hover: rgba(255, 255, 255, 0.035);
+  --text: #f3f1ec;
+  --muted: #9a958c;
+  --subtle: #5a564f;
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --accent: #b8a4ff;
+  --accent-soft: rgba(184, 164, 255, 0.12);
+  --accent-line: rgba(184, 164, 255, 0.28);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 html,
 body {
   background: var(--bg);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  /* Subtle warm radial wash + film grain */
+  background-image:
+    radial-gradient(1200px 600px at 12% -10%, rgba(184, 164, 255, 0.045), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(255, 200, 150, 0.025), transparent 60%),
+    var(--grain);
+  background-attachment: fixed;
+  background-size: auto, auto, 160px 160px;
 }
 
 * {
   border-color: var(--line);
 }
 
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* —— Typography utilities —— */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.display-light {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.018em;
+}
+
+.display-medium {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+/* —— Card —— */
+
+.card {
+  position: relative;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0)) ,
+    var(--surface);
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  border-color: var(--line-strong);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
+    var(--surface-hover);
+}
+
+.card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Top hairline accent that appears on hover */
+.card-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 0;
+  background: var(--accent-line);
+  transition: width 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-accent:hover::before {
+  width: 100%;
+}
+
+/* —— Link affordance —— */
+
+.link-arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.link-arrow::after {
+  content: "→";
+  transition: transform 180ms ease;
+}
+
+.link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* —— Orbit nav animation (preserved) —— */
+
 @keyframes orbitFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes orbitFloatX {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(2px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
 }
 
 .orbit-label {
@@ -49,16 +161,9 @@ body {
   animation-iteration-count: infinite;
 }
 
-.orbit-label-y {
-  animation-name: orbitFloat;
-}
-
-.orbit-label-x {
-  animation-name: orbitFloatX;
-}
+.orbit-label-y { animation-name: orbitFloat; }
+.orbit-label-x { animation-name: orbitFloatX; }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-label {
-    animation: none;
-  }
+  .orbit-label { animation: none; }
 }

@@ -25,16 +25,25 @@ export function OrbitNav() {
   const pathname = usePathname();
 
   return (
-    <aside className="mt-10 lg:mt-0">
-      <div className="mx-auto max-w-[420px] lg:sticky lg:top-24">
+    <aside className="mt-12 lg:mt-0">
+      <div className="mx-auto max-w-[420px] lg:sticky lg:top-20">
         <div className="relative h-[420px] w-[420px]">
-          <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2">
+          {/* Soft halo behind the mark */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              background:
+                "radial-gradient(closest-side, rgba(184,164,255,0.10), transparent 70%)",
+            }}
+          />
+          <div className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2">
             <Image
               src="/page-icon.png"
               alt="Site icon"
-              width={360}
-              height={360}
-              className="h-full w-full object-contain"
+              width={340}
+              height={340}
+              className="h-full w-full object-contain opacity-95"
               priority
             />
           </div>
@@ -47,10 +56,10 @@ export function OrbitNav() {
             return (
               <Link key={link.href} href={link.href} className={`group absolute ${link.position}`}>
                 <span
-                  className={`orbit-label ${index % 2 === 0 ? "orbit-label-y" : "orbit-label-x"} block border px-3 py-1.5 text-xs transition-all [font-family:var(--font-mono)] ${
+                  className={`orbit-label ${index % 2 === 0 ? "orbit-label-y" : "orbit-label-x"} block border px-3.5 py-1.5 text-[10px] tracking-[0.18em] uppercase transition-all duration-200 [font-family:var(--font-mono)] backdrop-blur-sm ${
                     isActive
-                      ? "border-[var(--text)] bg-[var(--text)] text-[var(--bg)]"
-                      : "border-[var(--line)] bg-[var(--surface)] text-[var(--muted)] group-hover:border-[var(--accent)] group-hover:text-[var(--text)]"
+                      ? "border-[var(--accent-line)] bg-[var(--accent-soft)] text-[var(--text)]"
+                      : "border-[var(--line)] bg-[var(--bg-elev)]/60 text-[var(--muted)] group-hover:border-[var(--accent-line)] group-hover:text-[var(--text)]"
                   }`}
                   style={{ animationDelay: `${index * 0.6}s` }}
                 >
@@ -61,7 +70,7 @@ export function OrbitNav() {
           })}
         </div>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-2 flex flex-wrap justify-center gap-1.5">
           {profileLinks.map((profile) => (
             <a
               key={profile.label}
@@ -70,9 +79,9 @@ export function OrbitNav() {
               rel="noreferrer"
               aria-label={profile.label}
               title={profile.label}
-              className="flex h-9 w-9 items-center justify-center border border-[var(--line)] bg-[var(--surface)] transition-colors hover:border-[var(--accent)]"
+              className="group flex h-9 w-9 items-center justify-center border border-[var(--line)] bg-[var(--bg-elev)]/40 transition-all duration-200 hover:border-[var(--accent-line)] hover:bg-[var(--accent-soft)]"
             >
-              <span className="relative block h-[18px] w-[18px]">
+              <span className="relative block h-[16px] w-[16px] opacity-80 transition-opacity group-hover:opacity-100">
                 <Image
                   src={profile.icon ?? getFaviconUrl(profile.href)}
                   alt={profile.label}

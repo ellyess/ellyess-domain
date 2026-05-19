@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { OrbitNav } from "@/components/OrbitNav";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Sora } from "next/font/google";
 import "./globals.css";
 
 const sans = IBM_Plex_Sans({
@@ -13,6 +13,12 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+
+const display = Sora({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -66,10 +72,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
-        <div className="mx-auto max-w-7xl px-6 py-10 md:py-14">
-          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-8">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-12">
             {children}
             <OrbitNav />
           </div>
