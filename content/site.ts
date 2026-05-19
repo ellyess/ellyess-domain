@@ -33,11 +33,18 @@ export const projects = [
     url: "https://github.com/ellyess/OBK-Gear-Optimiser",
   },
   {
+    title: "Fool's Ascension",
+    kind: "Game Development",
+    summary:
+      "Roguelite card game in development, built on the Russian card game Durak. Branching 3-act runs, persistent meta-progression, and tightly-systemised encounter design in Godot.",
+    url: "https://github.com/ellyess/durak-lite",
+  },
+  {
     title: "Music Production and Sound Exploration",
     kind: "Creative Practice",
     summary:
       "Explorations in musical composition and sound design, blending technical precision with artistic expression.",
-    url: "https://bandcamp.com/ellyxss",
+    url: "https://soundcloud.com/ellyxss",
   },
 ];
 
@@ -71,6 +78,10 @@ export const profileLinks: ProfileLink[] = [
     label: "SoundCloud",
     href: "https://soundcloud.com/ellyxss",
     icon: "/profile-icons/soundcloud.png",
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS",
   },
 ];
 
@@ -157,6 +168,14 @@ export const codeItems = [
     meta: "Web App",
     url: "https://ellyess.github.io/OBK-Swax-GT/",
   },
+  {
+    title: "Fool's Ascension",
+    summary:
+      "In-development roguelite card game built on Russian Durak. Branching 3-act runs across a 12-floor node graph, persistent deck/relic/HP progression, encounter modifiers, and a meta-progression Hall of Ascension.",
+    tech: "Godot · GDScript · Procedural map generation · Systems design",
+    meta: "In development",
+    url: "https://github.com/ellyess/durak-lite",
+  },
 ];
 
 export const experimentItems = [
@@ -181,28 +200,39 @@ export const experimentItems = [
 
 export const musicItems = [
   {
-    title: "Bandcamp Profile",
-    summary: "A primary archive of musical work, maintained as an active creative outlet alongside technical pursuits.",
-    meta: "Bandcamp",
-    url: "https://ellyxss.bandcamp.com/",
+    title: "Spotify — ellyxss",
+    summary: "Distributed releases on streaming. The cleanest place to follow new music.",
+    meta: "Spotify",
+    url: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS",
   },
   {
-    title: "SoundCloud Profile",
-    summary: "A secondary archive of musical work, maintained as a complementary creative outlet.",
+    title: "SoundCloud — ellyxss",
+    summary: "Working archive of released and exploratory tracks. Production and sound design as a continuing creative outlet alongside technical work.",
     meta: "SoundCloud",
     url: "https://soundcloud.com/ellyxss",
+  },
+  {
+    title: "Bandcamp — ellyxss",
+    summary: "Mirror archive of selected releases.",
+    meta: "Bandcamp",
+    url: "https://ellyxss.bandcamp.com/",
   },
 ];
 
 export const musicEmbeds = [
   {
-    title: "overload by ellyxss",
-    href: "https://ellyxss.bandcamp.com/track/overload",
-    src: "https://bandcamp.com/EmbeddedPlayer/track=2282367369/size=small/bgcol=333333/linkcol=9a64ff/transparent=true/",
+    title: "ellyxss on Spotify",
+    href: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS",
+    src: "https://open.spotify.com/embed/artist/3bDrg6yqhNheNR2vUbvzrS?utm_source=generator&theme=0",
+    height: 352,
+    platform: "Spotify",
+    rounded: true,
   },
   {
-    title: "recursion by ellyxss",
-    href: "https://ellyxss.bandcamp.com/track/recursion",
-    src: "https://bandcamp.com/EmbeddedPlayer/track=2055321409/size=small/bgcol=333333/linkcol=9a64ff/transparent=true/",
+    title: "ellyxss on SoundCloud — full discography",
+    href: "https://soundcloud.com/ellyxss",
+    src: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ellyxss&color=%239a64ff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
+    height: 450,
+    platform: "SoundCloud",
   },
 ];

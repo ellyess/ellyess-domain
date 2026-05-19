@@ -9,11 +9,11 @@ export default function HomePage() {
             Ellyess Benmoufok
         </h1>
         <p className="max-w-2xl text-base leading-relaxed text-[var(--muted)]">
-            Research software engineer and applied scientist specialising in scientific Python,
-            large-scale data pipelines, and simulation systems. PhD researcher at Imperial
-            College London with strong experience in modular code design, reproducibility,
-            and computational modelling. Proven ability to build maintainable open-source
-        tools and integrate models into optimisation frameworks.
+            Computational scientist and research software engineer. PhD at Imperial College London on
+            data science-enhanced wind power modelling — reanalysis bias correction, spatiotemporal
+            pipelines, and integration into continental-scale energy system optimisation (PyPSA-Eur).
+            I build modular scientific Python systems with an emphasis on reproducibility, performance,
+            and clear handoff between simulation and decision models.
         </p>
       </header>
 
@@ -241,8 +241,8 @@ export default function HomePage() {
         <div className="grid gap-2 text-sm text-[var(--muted)]">
         
         <p>
-            <span className="text-[var(--text)]">Core Language:</span>{" "}
-            Python
+            <span className="text-[var(--text)]">Languages:</span>{" "}
+            Python · JavaScript · C++ · Fortran · GDScript
         </p>
 
         <p>
@@ -277,9 +277,14 @@ export default function HomePage() {
     <Section title="Beyond Research">
     <article className="border border-[var(--line)] bg-[var(--surface)] p-4">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-        Outside of computational energy modelling, I explore real-time audio-visual systems and creative coding. 
-        My work includes generative visual design using TouchDesigner and music production in Ableton Live, 
+        Outside of computational energy modelling, I explore real-time audio-visual systems and creative coding.
+        My work includes generative visual design using TouchDesigner and music production in Ableton Live,
         focusing on interactive and performance-driven workflows.
+        </p>
+        <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+        I&apos;m also developing <span className="text-[var(--text)]">Fool&apos;s Ascension</span>,
+        a roguelite card game built on Russian Durak — branching 3-act runs, persistent meta-progression,
+        and tightly-systemised encounter design in Godot.
         </p>
     </article>
     </Section>
