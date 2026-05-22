@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OrbitNav } from "@/components/OrbitNav";
+import { CursorFx } from "@/components/CursorFx";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
+        <CursorFx />
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
           <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-12">
             {children}

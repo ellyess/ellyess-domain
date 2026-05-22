@@ -79,6 +79,7 @@ export function OrbitNav() {
               rel="noreferrer"
               aria-label={profile.label}
               title={profile.label}
+              data-magnetic
               className="group flex h-9 w-9 items-center justify-center border border-[var(--line)] bg-[var(--bg-elev)]/40 transition-all duration-200 hover:border-[var(--accent-line)] hover:bg-[var(--accent-soft)]"
             >
               <span className="relative block h-[16px] w-[16px] opacity-80 transition-opacity group-hover:opacity-100">
