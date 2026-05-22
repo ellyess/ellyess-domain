@@ -6,11 +6,24 @@ export default function HomePage() {
     <main className="space-y-20">
       {/* —— Hero —— */}
       <header className="space-y-7 pt-2">
-        <p className="eyebrow">Computational scientist · Research software engineer</p>
-        <h1 className="display text-6xl md:text-8xl text-[var(--text)] leading-[0.92]">
-          Ellyess <span className="display-light text-[var(--muted)]">Benmoufok</span>
+        <p className="eyebrow hero-rise" style={{ animationDelay: "0.05s" }}>
+          Computational scientist · Research software engineer
+        </p>
+        <h1 className="hero-name display text-[clamp(3rem,11vw,8.5rem)] text-[var(--text)] tracking-[-0.03em]">
+          <span className="given hero-rise" style={{ animationDelay: "0.15s" }}>
+            Ellyess
+          </span>
+          <span
+            className="family display-light text-[var(--muted)] hero-rise"
+            style={{ animationDelay: "0.3s" }}
+          >
+            Benmoufok
+          </span>
         </h1>
-        <p className="max-w-2xl text-[15px] leading-relaxed text-[var(--muted)]">
+        <p
+          className="max-w-2xl text-[15px] leading-relaxed text-[var(--muted)] hero-rise"
+          style={{ animationDelay: "0.45s" }}
+        >
           PhD researcher at Imperial College London working on
           {" "}
           <span className="text-[var(--text)]">data science-enhanced wind power modelling</span>
@@ -20,11 +33,14 @@ export default function HomePage() {
           Python systems with an emphasis on reproducibility, performance, and clear handoff
           between simulation and decision models.
         </p>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
-          <a href="mailto:benmoufok.ellyess@gmail.com" className="link-arrow">
+        <div
+          className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2 hero-rise"
+          style={{ animationDelay: "0.6s" }}
+        >
+          <a href="mailto:benmoufok.ellyess@gmail.com" className="link-arrow" data-magnetic>
             Get in touch
           </a>
-          <a href="/research" className="link-arrow">
+          <a href="/research" className="link-arrow" data-magnetic>
             View research
           </a>
         </div>
