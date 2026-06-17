@@ -12,6 +12,13 @@ export const principles = [
 
 export const projects = [
   {
+    title: "LLM Personas vs Real UK Opinion",
+    kind: "LLM Research",
+    summary:
+      "An independent study of whether populations of LLM personas reproduce the real distribution of opinions a human group holds, measured against nationally representative UK surveys. Five persona methods, two models, distribution-fidelity metrics (TVD/JSD), and diagnostics that detect a model being right for the wrong reasons.",
+    url: "https://github.com/ellyess/llm-persona-research",
+  },
+  {
     title: "PyVWF: Python Virtual Wind Farm",
     kind: "Research Engineering",
     summary:
@@ -26,18 +33,10 @@ export const projects = [
     url: "https://github.com/ellyess/pypsa-eur-wind",
   },
   {
-    title: "OBK Gear Optimiser",
-    kind: "Applied Optimisation",
-    summary:
-      "A practical optimisation interface translating formal models into clear decision support for iterative strategy tuning.",
-    url: "https://github.com/ellyess/OBK-Gear-Optimiser",
-  },
-  {
     title: "Fool's Ascension",
     kind: "Game Development",
     summary:
       "Roguelite card game in development, built on the Russian card game Durak. Branching 3-act runs, persistent meta-progression, and tightly-systemised encounter design in Godot.",
-    url: "https://github.com/ellyess/durak-lite",
   },
   {
     title: "Music Production and Sound Exploration",
@@ -45,6 +44,13 @@ export const projects = [
     summary:
       "Explorations in musical composition and sound design, blending technical precision with artistic expression.",
     url: "https://soundcloud.com/ellyxss",
+  },
+  {
+    title: "OBK Gear Optimiser",
+    kind: "Side Project",
+    summary:
+      "A small constrained-optimisation web app for tuning gear setups in a kart racing game. A hobby project applying search algorithms to a game-balancing problem.",
+    url: "https://github.com/ellyess/OBK-Gear-Optimiser",
   },
 ];
 
@@ -174,7 +180,6 @@ export const codeItems = [
       "In-development roguelite card game built on Russian Durak. Branching 3-act runs across a 12-floor node graph, persistent deck/relic/HP progression, encounter modifiers, and a meta-progression Hall of Ascension.",
     tech: "Godot · GDScript · Procedural map generation · Systems design",
     meta: "In development",
-    url: "https://github.com/ellyess/durak-lite",
   },
 ];
 

@@ -7,7 +7,7 @@ export default function HomePage() {
       {/* —— Hero —— */}
       <header className="space-y-7 pt-2">
         <p className="eyebrow hero-rise" style={{ animationDelay: "0.05s" }}>
-          Computational scientist · Research software engineer
+          Computational science · LLM research · Energy systems
         </p>
         <h1 className="hero-name display text-[clamp(3rem,11vw,8.5rem)] text-[var(--text)] tracking-[-0.03em]">
           <span className="given hero-rise" style={{ animationDelay: "0.15s" }}>
@@ -24,14 +24,15 @@ export default function HomePage() {
           className="max-w-2xl text-[15px] leading-relaxed text-[var(--muted)] hero-rise"
           style={{ animationDelay: "0.45s" }}
         >
-          PhD researcher at Imperial College London working on
-          {" "}
-          <span className="text-[var(--text)]">data science-enhanced wind power modelling</span>
-          {" "}
-          — reanalysis bias correction, spatiotemporal pipelines, and integration into
-          continental-scale energy system optimisation (PyPSA-Eur). I build modular scientific
-          Python systems with an emphasis on reproducibility, performance, and clear handoff
-          between simulation and decision models.
+          PhD computational scientist at Imperial College London. The throughline across my
+          work is{" "}
+          <span className="text-[var(--text)]">scientific and computational methods validated against real-world ground truth</span>.
+          {" "}In energy, that means bias-correcting ERA5 reanalysis against observed wind
+          generation (PyVWF) and feeding it into continental-scale energy system optimisation
+          (PyPSA-Eur). In LLM research, it means scoring populations of model personas against
+          nationally representative survey distributions. I build modular scientific Python
+          systems with an emphasis on reproducibility, performance, and clear handoff between
+          simulation and decision models.
         </p>
         <div
           className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2 hero-rise"
@@ -115,7 +116,9 @@ export default function HomePage() {
             org="Link Humans"
             period="Jan 2019 — Aug 2019"
             bullets={[
-              "Analysed raw data and surfaced trends informing employer branding strategy.",
+              "Most technical member of the team; led automation of the Employer Brand Index, the company's core data product.",
+              "Built web scrapers and data-cleaning pipelines to source and standardise employer branding signals.",
+              "Prototyped the data pipeline intended to support training a language model on the collected corpus.",
             ]}
           />
         </div>
