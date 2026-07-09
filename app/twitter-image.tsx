@@ -26,14 +26,14 @@ export default function TwitterImage() {
         <div style={{ color: "#a7b0bd", fontSize: 24 }}>ellyess.com</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 62, lineHeight: 1.1, maxWidth: 980 }}>
-            Systems Engineering
+            Climate &amp; Energy Data Science
           </div>
           <div style={{ fontSize: 30, color: "#a7b0bd", maxWidth: 980 }}>
-            Wind energy systems, optimisation, and computational modelling.
+            Wind power modelling, reanalysis bias correction, and scientific Python.
           </div>
         </div>
         <div style={{ fontSize: 20, color: "#7aa2f7" }}>
-          Research · Code · Experiments
+          Research · Code · Open Source
         </div>
       </div>
     ),

@@ -7,7 +7,7 @@ export default function HomePage() {
       {/* —— Hero —— */}
       <header className="space-y-7 pt-2">
         <p className="eyebrow hero-rise" style={{ animationDelay: "0.05s" }}>
-          Computational science · LLM research · Energy systems
+          Climate &amp; energy data science · Scientific Python · Research software engineering
         </p>
         <h1 className="hero-name display text-[clamp(3rem,11vw,8.5rem)] text-[var(--text)] tracking-[-0.03em]">
           <span className="given hero-rise" style={{ animationDelay: "0.15s" }}>
@@ -24,15 +24,16 @@ export default function HomePage() {
           className="max-w-2xl text-[15px] leading-relaxed text-[var(--muted)] hero-rise"
           style={{ animationDelay: "0.45s" }}
         >
-          PhD computational scientist at Imperial College London. The throughline across my
-          work is{" "}
-          <span className="text-[var(--text)]">scientific and computational methods validated against real-world ground truth</span>.
-          {" "}In energy, that means bias-correcting ERA5 reanalysis against observed wind
-          generation (PyVWF) and feeding it into continental-scale energy system optimisation
-          (PyPSA-Eur). In LLM research, it means scoring populations of model personas against
-          nationally representative survey distributions. I build modular scientific Python
-          systems with an emphasis on reproducibility, performance, and clear handoff between
-          simulation and decision models.
+          Computational scientist and data scientist specialising in{" "}
+          <span className="text-[var(--text)]">climate and energy systems modelling, scientific Python, and reproducible research software</span>.
+          {" "}I recently completed my PhD at Imperial College London (Earth Science and
+          Engineering), working on high-resolution wind power modelling and statistical bias
+          correction of ERA5 reanalysis data, with peer-reviewed publications in Energy and
+          Energy Conversion and Management. I&apos;m the author of PyVWF, an open-source Python
+          library for bias correction of reanalysis wind data, and I build tooling for large
+          spatiotemporal datasets with Xarray, Dask, and GeoPandas, spanning geospatial
+          analysis, uncertainty quantification, and the testing, packaging, and CI discipline
+          that turns research code into something others can build on.
         </p>
         <div
           className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2 hero-rise"
@@ -48,15 +49,15 @@ export default function HomePage() {
       </header>
 
       {/* —— Education —— */}
-      <Section number="01" title="Education" kicker="2015 — 2026">
+      <Section number="01" title="Education" kicker="2015 – 2026">
         <div className="space-y-px">
           <EducationCard
             degree="PhD, Computational Science"
             institution="Imperial College London"
-            period="Oct 2021 — 2026"
+            period="Oct 2021 – 2026"
             note="Department of Earth Science and Engineering"
             bullets={[
-              "Developed PyVWF — modular wind simulation and reanalysis bias-correction tooling.",
+              "Developed PyVWF, modular wind simulation and reanalysis bias-correction tooling.",
               "Built scalable ERA5 spatiotemporal pipelines integrated into PyPSA-Eur optimisation studies.",
               "Published peer-reviewed work on high-resolution wind bias correction.",
             ]}
@@ -64,7 +65,7 @@ export default function HomePage() {
           <EducationCard
             degree="MSc, Applied Computational Science and Engineering"
             institution="Imperial College London"
-            period="Oct 2019 — Oct 2020"
+            period="Oct 2019 – Oct 2020"
             note="Distinction"
             bullets={[
               "Numerical methods, optimisation, and parallel programming in Python and C++.",
@@ -74,7 +75,7 @@ export default function HomePage() {
           <EducationCard
             degree="BSc, Physics"
             institution="University of Surrey"
-            period="Sep 2015 — Jun 2018"
+            period="Sep 2015 – Jun 2018"
             note="First Class Honours"
             bullets={[
               "Foundations in mathematical modelling, numerical analysis, and physical systems.",
@@ -85,12 +86,12 @@ export default function HomePage() {
       </Section>
 
       {/* —— Experience —— */}
-      <Section number="02" title="Experience" kicker="2019 — present">
+      <Section number="02" title="Experience" kicker="2019 – present">
         <div className="space-y-px">
           <ExperienceCard
             role="Graduate Teaching Assistant"
             org="Imperial College London"
-            period="Oct 2020 — Oct 2024"
+            period="Oct 2020 – Oct 2024"
             bullets={[
               "Supported teaching and assessment across computational science modules.",
             ]}
@@ -98,7 +99,7 @@ export default function HomePage() {
           <ExperienceCard
             role="Data Science Intern"
             org="Shell"
-            period="Jun 2021 — Sep 2021"
+            period="Jun 2021 – Sep 2021"
             bullets={[
               "Applied data science methods to energy-relevant datasets; delivered analysis and prototypes.",
             ]}
@@ -106,15 +107,16 @@ export default function HomePage() {
           <ExperienceCard
             role="App Developer"
             org="Imperial College London"
-            period="Dec 2020 — Mar 2021"
+            period="Dec 2020 – Mar 2021"
             bullets={[
-              "Built geospatial metrics and ML-driven spatial analyses on Google Earth Engine.",
+              "Contributed to I-Hex, a Google Earth Engine web application suite (Imperial College London, Maldives National University, Banyan Tree Foundation) surfacing decades of satellite remote-sensing and climate data for island environmental monitoring in the Indian Ocean.",
+              "Applied machine learning to satellite imagery for land-cover classification and feature detection.",
             ]}
           />
           <ExperienceCard
             role="Data Scientist"
             org="Link Humans"
-            period="Jan 2019 — Aug 2019"
+            period="Jan 2019 – Aug 2019"
             bullets={[
               "Most technical member of the team; led automation of the Employer Brand Index, the company's core data product.",
               "Built web scrapers and data-cleaning pipelines to source and standardise employer branding signals.",
@@ -150,7 +152,7 @@ export default function HomePage() {
             )}
             venue="Energy · 2024"
             cite="Energy, 313, 133759."
-            note="Lead-author study introducing PyVWF — a multi-country high-resolution bias correction framework for reanalysis-driven wind power modelling."
+            note="Lead-author study introducing PyVWF, a multi-country high-resolution bias correction framework for reanalysis-driven wind power modelling."
             url="https://doi.org/10.1016/j.energy.2024.133759"
           />
           <PublicationCard
@@ -169,31 +171,60 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* —— Open Source & Research Software —— */}
+      <Section number="04" title="Open Source & Research Software" kicker="Reproducible research">
+        <div className="space-y-px">
+          <OpenSourceCard
+            title="PyVWF (Python Virtual Wind Farm)"
+            role="Author"
+            status="JOSS submission in preparation"
+            tech="Python · Xarray · Dask · GeoPandas · SciPy · scikit-learn"
+            url="https://github.com/ellyess/PyVWF"
+            paragraphs={[
+              "An open-source Python library for statistical bias correction of reanalysis wind data and wind power capacity factor estimation, developed through my PhD and the peer-reviewed publications above.",
+              "Maintained as reproducible research software: a pytest suite with coverage, linting with ruff, and GitHub Actions CI across Python 3.10 to 3.12, packaged for pip install. A submission to the Journal of Open Source Software (JOSS) is in preparation.",
+            ]}
+          />
+          <OpenSourceCard
+            title="PyPSA-Eur wind integration"
+            role="Research code"
+            status="GitHub"
+            tech="Python · PyPSA · Atlite · Snakemake · ERA5"
+            url="https://github.com/ellyess/pypsa-eur-wind"
+            paragraphs={[
+              "Energy systems optimisation extensions integrating improved wind modelling into the PyPSA-Eur ecosystem, with Snakemake workflows carrying corrected reanalysis fields into continental-scale planning studies.",
+            ]}
+          />
+        </div>
+      </Section>
+
       {/* —— Stack —— */}
-      <Section number="04" title="Technical Stack" kicker="Working tools">
+      <Section number="05" title="Technical Stack" kicker="Working tools">
         <div className="card grid grid-cols-1 gap-px md:grid-cols-2">
           <StackRow label="Languages" value="Python · JavaScript · C++ · Fortran · GDScript" />
           <StackRow label="Scientific" value="NumPy · Pandas · Xarray · SciPy · Dask" />
           <StackRow label="Energy / Optimisation" value="PyPSA · PyPSA-Eur · Atlite · Gurobi" />
           <StackRow label="Geo / Climate" value="GeoPandas · Shapely · Rasterio · ERA5" />
           <StackRow label="Workflow" value="Snakemake · Conda · Git · GitHub" />
+          <StackRow label="Software practice" value="pytest + coverage · GitHub Actions CI · ruff · Packaging (pyproject)" />
           <StackRow label="Writing" value="LaTeX · Matplotlib" />
+          <StackRow label="Creative" value="TouchDesigner · Ableton Live · Godot" />
         </div>
       </Section>
 
       {/* —— Beyond Research —— */}
-      <Section number="05" title="Beyond Research" kicker="Creative practice">
+      <Section number="06" title="Beyond Research" kicker="Creative practice">
         <div className="space-y-px">
           <article className="card px-6 py-6">
             <p className="text-sm leading-relaxed text-[var(--muted)]">
               Outside computational energy modelling, I work on real-time audio-visual systems
-              and creative coding — generative visuals in TouchDesigner and music production in
-              Ableton Live, oriented toward interactive and performance-driven workflows.
+              and creative coding, with generative visuals in TouchDesigner and music production
+              in Ableton Live, oriented toward interactive and performance-driven workflows.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
               I&apos;m also developing{" "}
               <span className="display-medium text-[var(--text)]">Fool&apos;s Ascension</span>
-              {" "}— a roguelite card game built on Russian Durak. Branching 3-act runs,
+              , a roguelite card game built on Russian Durak. Branching 3-act runs,
               persistent meta-progression, and tightly-systemised encounter design in Godot.
             </p>
           </article>
@@ -201,7 +232,7 @@ export default function HomePage() {
       </Section>
 
       {/* —— Selected Work —— */}
-      <Section number="06" title="Selected Work" kicker="Projects & artefacts">
+      <Section number="07" title="Selected Work" kicker="Projects & artefacts">
         <div className="space-y-px">
           {projects.map((project, i) => (
             <article key={project.title} className="card card-accent group grid grid-cols-1 gap-4 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)_auto] md:items-baseline md:gap-8">
@@ -341,6 +372,48 @@ function PublicationCard({
           className="link-arrow inline-flex pt-1"
         >
           View publication
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function OpenSourceCard({
+  title,
+  role,
+  status,
+  tech,
+  url,
+  paragraphs,
+}: {
+  title: string;
+  role: string;
+  status: string;
+  tech: string;
+  url: string;
+  paragraphs: string[];
+}) {
+  return (
+    <article className="card card-accent group grid grid-cols-1 gap-3 px-6 py-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8">
+      <div className="space-y-1">
+        <p className="eyebrow text-[var(--muted)]">{role}</p>
+        <p className="eyebrow text-[var(--subtle)]">{status}</p>
+      </div>
+      <div className="space-y-3">
+        <h3 className="display text-lg md:text-xl text-[var(--text)] leading-snug">{title}</h3>
+        {paragraphs.map((p) => (
+          <p key={p} className="text-sm leading-relaxed text-[var(--muted)]">
+            {p}
+          </p>
+        ))}
+        <p className="text-xs text-[var(--subtle)]">{tech}</p>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="link-arrow inline-flex pt-1"
+        >
+          View on GitHub
         </a>
       </div>
     </article>

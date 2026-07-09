@@ -26,14 +26,14 @@ export default function OpenGraphImage() {
         <div style={{ color: "#a7b0bd", fontSize: 24 }}>ellyess.com</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 64, lineHeight: 1.1, maxWidth: 980 }}>
-            Systems &amp; Optimisation
+            Climate &amp; Energy Data Science
           </div>
           <div style={{ fontSize: 28, color: "#a7b0bd", maxWidth: 980 }}>
-            Computational science, energy systems, and applied modelling.
+            Scientific Python, reanalysis modelling, and research software engineering.
           </div>
         </div>
         <div style={{ fontSize: 20, color: "#7aa2f7" }}>
-          Formulate · Optimise · Validate
+          PhD, Imperial College London
         </div>
       </div>
     ),

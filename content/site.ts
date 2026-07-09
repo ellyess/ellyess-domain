@@ -1,7 +1,6 @@
 export type ProfileLink = {
   label: string;
   href: string;
-  icon?: string;
 };
 
 export const principles = [
@@ -12,17 +11,10 @@ export const principles = [
 
 export const projects = [
   {
-    title: "LLM Personas vs Real UK Opinion",
-    kind: "LLM Research",
-    summary:
-      "An independent study of whether populations of LLM personas reproduce the real distribution of opinions a human group holds, measured against nationally representative UK surveys. Five persona methods, two models, distribution-fidelity metrics (TVD/JSD), and diagnostics that detect a model being right for the wrong reasons.",
-    url: "https://github.com/ellyess/llm-persona-research",
-  },
-  {
     title: "PyVWF: Python Virtual Wind Farm",
-    kind: "Research Engineering",
+    kind: "Open Source",
     summary:
-      "Methods for reducing systematic error in wind resource estimation pipelines, with emphasis on robust calibration and reproducible evaluation.",
+      "Open-source Python library for bias correction of reanalysis wind data and wind power capacity factor estimation. Featured above under Open Source & Research Software.",
     url: "https://github.com/ellyess/PyVWF",
   },
   {
@@ -31,6 +23,13 @@ export const projects = [
     summary:
       "Scenario design and optimisation experiments for large-scale energy system planning using PyPSA-Eur and scientific Python tooling.",
     url: "https://github.com/ellyess/pypsa-eur-wind",
+  },
+  {
+    title: "LLM Personas vs Real UK Opinion",
+    kind: "LLM Research",
+    summary:
+      "An independent study of whether populations of LLM personas reproduce the real distribution of opinions a human group holds, measured against nationally representative UK surveys. Five persona methods, two models, distribution-fidelity metrics (TVD/JSD), and diagnostics that detect a model being right for the wrong reasons.",
+    url: "https://github.com/ellyess/llm-persona-research",
   },
   {
     title: "Fool's Ascension",
@@ -58,32 +57,26 @@ export const profileLinks: ProfileLink[] = [
   {
     label: "GitHub",
     href: "https://github.com/ellyess",
-    icon: "/profile-icons/github.png",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ellyessbenmoufok/",
-    icon: "/profile-icons/linkedin.png",
   },
   {
     label: "ORCID",
     href: "https://orcid.org/0009-0000-0337-5690",
-    icon: "/profile-icons/orcid.png",
   },
   {
     label: "ResearchGate",
     href: "https://www.researchgate.net/profile/Ellyess_Benmoufok2",
-    icon: "/profile-icons/researchgate.png",
   },
   {
     label: "Bandcamp",
     href: "https://ellyxss.bandcamp.com/",
-    icon: "/profile-icons/bandcamp.png",
   },
   {
     label: "SoundCloud",
     href: "https://soundcloud.com/ellyxss",
-    icon: "/profile-icons/soundcloud.png",
   },
   {
     label: "Spotify",
@@ -102,11 +95,6 @@ export const areas = [
     href: "/code",
     summary: "Scientific software and implementation-focused engineering output.",
   },
-//   {
-//     title: "Experiments",
-//     href: "/experiments",
-//     summary: "Small prototypes for validating ideas under constrained assumptions.",
-//   },
   {
     title: "Music",
     href: "/music",
@@ -118,7 +106,7 @@ export const researchItems = [
   {
     title: "PhD - Data Science-Enhanced Wind Power Modelling: From Reanalysis Correction to Energy System Representation",
     summary: "A comprehensive research project for improving wind power modelling through data-driven bias correction and enhanced representation in energy system models.",
-    meta: "Ongoing",
+    meta: "Completed",
   },
   {
     title: "Geographic variability in reanalysis wind speed biases: A high-resolution bias correction approach for UK wind energy",
@@ -182,26 +170,6 @@ export const codeItems = [
     meta: "In development",
   },
 ];
-
-export const experimentItems = [
-  {
-    title: "DAO Treasury Stress Testing",
-    summary: "Prototype simulation models for treasury allocation under volatility and governance constraints.",
-    meta: "Web3",
-  },
-  {
-    title: "Yield Strategy Constraint Sandbox",
-    summary: "Small simulation notebooks and interfaces for comparing capital allocation heuristics.",
-    meta: "DeFi",
-  },
-  {
-    title: "Model Diagnostics Mini-Tools",
-    summary: "Focused utilities for checking optimisation assumptions and solution sensitivity.",
-    meta: "Systems",
-  },
-];
-
-
 
 export const musicItems = [
   {

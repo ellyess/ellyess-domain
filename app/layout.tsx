@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Nav } from "@/components/Nav";
 import { OrbitNav } from "@/components/OrbitNav";
 import { CursorFx } from "@/components/CursorFx";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Sora } from "next/font/google";
@@ -25,11 +26,11 @@ const display = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ellyess.com"),
   title: {
-    default: "Ellyess — Systems & Optimisation",
+    default: "Ellyess Benmoufok | Climate & Energy Data Scientist",
     template: "%s · Ellyess",
   },
   description:
-    "Computational science, energy systems, optimisation, and applied modelling.",
+    "Climate and energy data science, scientific Python, and research software engineering. PhD, Imperial College London.",
   applicationName: "Ellyess",
   alternates: {
     canonical: "/",
@@ -37,24 +38,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://ellyess.com",
-    title: "Ellyess — Systems & Optimisation",
+    title: "Ellyess Benmoufok | Climate & Energy Data Scientist",
     description:
-      "Computational science, energy systems, optimisation, and applied modelling.",
+      "Climate and energy data science, scientific Python, and research software engineering. PhD, Imperial College London.",
     siteName: "Ellyess",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ellyess — Systems & Optimisation",
+        alt: "Ellyess Benmoufok | Climate & Energy Data Scientist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ellyess — Systems & Optimisation",
+    title: "Ellyess Benmoufok | Climate & Energy Data Scientist",
     description:
-      "Computational science, energy systems, optimisation, and applied modelling.",
+      "Climate and energy data science, scientific Python, and research software engineering. PhD, Imperial College London.",
     images: ["/twitter-image"],
   },
   robots: {
@@ -76,7 +77,8 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
         <CursorFx />
-        <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+          <Nav />
           <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-12">
             {children}
             <OrbitNav />

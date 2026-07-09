@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Ellyess — Systems & Optimisation",
+    name: "Ellyess Benmoufok | Climate & Energy Data Scientist",
     short_name: "Ellyess",
     description:
-      "Computational science, energy systems, optimisation, and applied modelling.",
+      "Climate and energy data science, scientific Python, and research software engineering. PhD, Imperial College London.",
     start_url: "/",
     display: "standalone",
     background_color: "#0b0d10",

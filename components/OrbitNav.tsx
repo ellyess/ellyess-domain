@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { profileLinks } from "@/content/site";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ProfileLinks } from "@/components/ProfileLinks";
 
 const orbitLinks = [
   { href: "/", label: "Home", position: "top-8 left-1/2 -translate-x-1/2" },
@@ -11,15 +11,6 @@ const orbitLinks = [
   { href: "/code", label: "Code", position: "bottom-12 left-1/2 -translate-x-1/2" },
   { href: "/music", label: "Music", position: "top-1/2 left-26 -translate-y-1/2" },
 ];
-
-function getFaviconUrl(href: string) {
-  try {
-    const domain = new URL(href).hostname;
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-  } catch {
-    return "https://www.google.com/s2/favicons?domain=example.com&sz=64";
-  }
-}
 
 export function OrbitNav() {
   const pathname = usePathname();
@@ -70,29 +61,7 @@ export function OrbitNav() {
           })}
         </div>
 
-        <div className="mt-2 flex flex-wrap justify-center gap-1.5">
-          {profileLinks.map((profile) => (
-            <a
-              key={profile.label}
-              href={profile.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={profile.label}
-              title={profile.label}
-              data-magnetic
-              className="group flex h-9 w-9 items-center justify-center border border-[var(--line)] bg-[var(--bg-elev)]/40 transition-all duration-200 hover:border-[var(--accent-line)] hover:bg-[var(--accent-soft)]"
-            >
-              <span className="relative block h-[16px] w-[16px] opacity-80 transition-opacity group-hover:opacity-100">
-                <Image
-                  src={profile.icon ?? getFaviconUrl(profile.href)}
-                  alt={profile.label}
-                  fill
-                  className="object-contain invert"
-                />
-              </span>
-            </a>
-          ))}
-        </div>
+        <ProfileLinks className="mt-2 justify-center" />
       </div>
     </aside>
   );

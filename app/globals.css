@@ -8,7 +8,8 @@
   --surface-hover: rgba(255, 255, 255, 0.035);
   --text: #f3f1ec;
   --muted: #9a958c;
-  --subtle: #5a564f;
+  /* Small-text tier: kept warm but raised to ~4.8:1 on --bg for WCAG AA */
+  --subtle: #827d74;
   --line: rgba(255, 255, 255, 0.07);
   --line-strong: rgba(255, 255, 255, 0.14);
   --accent: #b8a4ff;
@@ -44,33 +45,42 @@ body {
   color: var(--text);
 }
 
-/* —— Typography utilities —— */
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
+:focus-visible {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 3px;
 }
 
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-}
+/* —— Typography utilities ——
+   Layered as components so Tailwind utility classes (e.g. text-[var(--subtle)])
+   can override the defaults set here. */
 
-.display-light {
-  font-family: var(--font-display);
-  font-weight: 300;
-  letter-spacing: -0.018em;
-}
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
 
-.display-medium {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  .display-light {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.018em;
+  }
+
+  .display-medium {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
 }
 
 .hairline {
