@@ -8,16 +8,16 @@ export default function manifest(): MetadataRoute.Manifest {
       "Climate and energy data science, scientific Python, and research software engineering. PhD, Imperial College London.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0b0d10",
-    theme_color: "#0b0d10",
+    background_color: "#0b0e13",
+    theme_color: "#0b0e13",
     icons: [
       {
-        src: "/page-icon.png",
-        sizes: "512x512",
-        type: "image/png",
+        src: "/icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
       },
       {
-        src: "/page-icon.png",
+        src: "/apple-icon.png",
         sizes: "180x180",
         type: "image/png",
       },

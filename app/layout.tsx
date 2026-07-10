@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
-import { OrbitNav } from "@/components/OrbitNav";
-import { CursorFx } from "@/components/CursorFx";
+import { Footer } from "@/components/Footer";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -17,10 +16,11 @@ const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+// Display face is reserved for the name and wordmark only
 const display = Sora({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "500"],
 });
 
 export const metadata: Metadata = {
@@ -62,10 +62,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: "/page-icon.png",
-    apple: "/page-icon.png",
-  },
 };
 
 export default function RootLayout({
@@ -76,13 +72,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
-        <CursorFx />
-        <div className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+        <div className="mx-auto max-w-[1060px] px-6">
           <Nav />
-          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-12">
-            {children}
-            <OrbitNav />
-          </div>
+          {children}
+          <Footer />
         </div>
       </body>
     </html>
