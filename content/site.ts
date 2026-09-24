@@ -152,12 +152,6 @@ export const profileLinks: ProfileLink[] = [
   { label: "ResearchGate", href: "https://www.researchgate.net/profile/Ellyess_Benmoufok2" },
 ];
 
-export const musicLinks: ProfileLink[] = [
-  { label: "Bandcamp", href: "https://ellyxss.bandcamp.com/" },
-  { label: "SoundCloud", href: "https://soundcloud.com/ellyxss" },
-  { label: "Spotify", href: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS" },
-];
-
 export const publications = [
   {
     title:
@@ -239,44 +233,5 @@ export const codeItems: Item[] = [
     summary:
       "Roguelite card game built on the Russian card game Durak: branching three-act runs over a procedurally generated node map, with persistent meta-progression.",
     tech: "Godot · GDScript",
-  },
-];
-
-export const musicItems: Item[] = [
-  {
-    title: "Spotify: ellyxss",
-    summary: "Distributed releases on streaming. The cleanest place to follow new music.",
-    meta: "Spotify",
-    url: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS",
-  },
-  {
-    title: "SoundCloud: ellyxss",
-    summary: "Working archive of released and exploratory tracks.",
-    meta: "SoundCloud",
-    url: "https://soundcloud.com/ellyxss",
-  },
-  {
-    title: "Bandcamp: ellyxss",
-    summary: "Mirror archive of selected releases.",
-    meta: "Bandcamp",
-    url: "https://ellyxss.bandcamp.com/",
-  },
-];
-
-export const musicEmbeds = [
-  {
-    title: "ellyxss on Spotify",
-    href: "https://open.spotify.com/artist/3bDrg6yqhNheNR2vUbvzrS",
-    src: "https://open.spotify.com/embed/artist/3bDrg6yqhNheNR2vUbvzrS?utm_source=generator&theme=0",
-    height: 352,
-    platform: "Spotify",
-    rounded: true,
-  },
-  {
-    title: "ellyxss on SoundCloud: full discography",
-    href: "https://soundcloud.com/ellyxss",
-    src: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ellyxss&color=%239a64ff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
-    height: 450,
-    platform: "SoundCloud",
   },
 ];

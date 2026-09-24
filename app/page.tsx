@@ -337,18 +337,6 @@ export default function HomePage() {
         <SpecRow label="Certification" value="Microsoft Azure Fundamentals (AZ-900)" />
       </Section>
 
-      {/* —— Outside work —— */}
-      <Section number="08" title="Outside work" kicker="Creative practice">
-        <Row>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            I produce music in Ableton Live, build generative visuals in TouchDesigner, and am
-            developing a roguelite card game in Godot.{" "}
-            <Link href="/music" className="text-[var(--accent)] hover:underline">
-              Music
-            </Link>
-          </p>
-        </Row>
-      </Section>
     </main>
   );
 }
