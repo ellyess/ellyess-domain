@@ -1,7 +1,13 @@
 /* Case studies. Every figure is quoted with the configuration it belongs
    to; the candidate profile in ai-job-search is the source of truth. */
 
+export type Figure = {
+  images: { src: string; width: number; height: number; alt: string }[];
+  caption: string;
+};
+
 export type CaseSection = {
+  figure?: Figure;
   title: string;
   kicker?: string;
   intro?: string;
@@ -44,6 +50,13 @@ export const projects: Project[] = [
       },
       {
         title: "Approach",
+        figure: {
+          images: [
+            { src: "/work/control-points.png", width: 1263, height: 766, alt: "Maps of Europe showing scalar and offset correction factors at 1,729 control points" },
+          ],
+          caption:
+            "Correction factors at the 1,729 control points: (a) the scalar α, (b) the offset β. Turbine-level data is dense in Denmark, Germany and the UK; elsewhere the points come from national generation. From my thesis, Fig. 4.1.",
+        },
         bullets: [
           "A Python rewrite of Iain Staffell's Virtual Wind Farm model, which underpins the wind simulations on Renewables.ninja, implementing the granular method from my 2024 Energy paper.",
           "Turbines are clustered spatially and their generation grouped in time. A scalar and an offset are fitted per cluster and period against observed generation, then applied to ERA5 wind speeds.",
@@ -53,6 +66,13 @@ export const projects: Project[] = [
       },
       {
         title: "Results",
+        figure: {
+          images: [
+            { src: "/work/gridded-corrections.png", width: 1263, height: 738, alt: "Gridded maps of the interpolated scalar and offset correction fields over Europe" },
+          ],
+          caption:
+            "The correction fields interpolated onto the ERA5 grid with IDW. A scalar below 1 means ERA5 overestimates wind speed there. Cells far from any control point, in grey, get no correction. From my thesis, Fig. 8.1.",
+        },
         kicker: "Each figure with its configuration",
         bullets: [
           "Denmark, 76 correction configurations: intermediate spatial resolution with seasonal or bimonthly grouping generalised best, and over-fitting at high resolution was measured with elbow and silhouette diagnostics rather than assumed.",
@@ -64,6 +84,13 @@ export const projects: Project[] = [
       },
       {
         title: "What did not work",
+        figure: {
+          images: [
+            { src: "/work/random-vs-spatial-cv.png", width: 1263, height: 538, alt: "Bar chart comparing MAE and R-squared under random and spatial cross-validation" },
+          ],
+          caption:
+            "Elastic Net under random and spatial cross-validation, for (a) the scalar and (b) the offset. Part of the skill under random folds comes from nearby sites leaking into the test set. From my thesis, Fig. 5.1.",
+        },
         bullets: [
           "Terrain-informed machine learning, 27 features across 23,009 turbines in Denmark, the UK and Germany. Random cross-validation gave R² of 0.35 to 0.41. Nearby turbines share weather, so those folds were not independent.",
           "Under spatial cross-validation the ranking changed: Elastic Net 0.295, Ridge 0.293, random forest 0.271, gradient boosting 0.261. Holding out the UK, the random forest fell to −0.376 and Ridge was the only model above zero.",
@@ -109,6 +136,13 @@ export const projects: Project[] = [
       },
       {
         title: "Approach",
+        figure: {
+          images: [
+            { src: "/work/region-splitting.png", width: 1263, height: 852, alt: "Three maps of the North Sea region split into progressively smaller onshore and offshore subregions" },
+          ],
+          caption:
+            "The splitting algorithm at maximum region sizes of 100,000, 10,000 and 1,000 km², using k-means and Voronoi partitions in an equal-area projection. From my thesis, Fig. 6.1.",
+        },
         bullets: [
           "Integrated the gridded PyVWF corrections into the PyPSA-Eur wind resource pipeline, upstream at wind-speed level.",
           "A density-tiered wake-loss correction where losses scale with installed capacity density rather than absolute capacity, which makes it consistent across resolutions by construction. The underlying physical relation came from a postdoctoral colleague; the density-tiered form and its implementation in PyPSA-Eur are mine.",
@@ -118,6 +152,14 @@ export const projects: Project[] = [
       },
       {
         title: "Validation",
+        figure: {
+          images: [
+            { src: "/work/entsoe-onshore.png", width: 1263, height: 308, alt: "Weekly wind generation in 2023 for Denmark and France onshore: observed, uncorrected and corrected" },
+            { src: "/work/entsoe-offshore.png", width: 638, height: 300, alt: "Weekly wind generation in 2023 for Germany offshore: observed, uncorrected and corrected" },
+          ],
+          caption:
+            "Weekly generation in 2023: ENTSO-E observed (black), uncorrected ERA5 (orange) and IDW-corrected (green). Top: Denmark onshore, where the correction closes much of the gap, and France onshore, where it changes little. Bottom: Germany offshore, where both still overestimate with no wake losses applied. From my thesis, Fig. 8.2.",
+        },
         kicker: "ENTSO-E observed generation, 2023",
         bullets: [
           "Modelled capacity factors compared against hourly generation across 23 countries onshore and 7 offshore.",
@@ -128,6 +170,13 @@ export const projects: Project[] = [
       },
       {
         title: "Results",
+        figure: {
+          images: [
+            { src: "/work/system-cost.png", width: 875, height: 480, alt: "Bar chart of total system cost for base, PyVWF-corrected and uniformly scaled wind" },
+          ],
+          caption:
+            "Total annual system cost in a seven-country, electricity-only North Sea system: uncorrected ERA5 (Base), spatially resolved PyVWF correction (+8.10%) and uniform scaling (+3.92%). From my thesis, Fig. 8.4.",
+        },
         kicker: "Each figure with its configuration",
         bullets: [
           "Wake losses dominate the technology mix at every scale, reducing offshore wind capacity by 36 to 46% and raising onshore deployment by up to 113%. At continental scale they are also the largest cost driver, at +2.9%.",

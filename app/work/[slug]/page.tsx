@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/Section";
@@ -75,6 +76,31 @@ export default async function ProjectPage({ params }: Props) {
             ) : null}
             {s.bullets ? <RowBullets bullets={s.bullets} /> : null}
           </Row>
+          {s.figure ? (
+            <figure className="mt-4 md:ml-[96px]">
+              <div className="space-y-3 rounded-md bg-white p-3 md:p-5">
+                {s.figure.images.map((img) => (
+                  <Image
+                    key={img.src}
+                    src={img.src}
+                    width={img.width}
+                    height={img.height}
+                    alt={img.alt}
+                    sizes="(min-width: 1060px) 900px, 100vw"
+                    className="mx-auto h-auto"
+                    style={{
+                      // Panels in one figure share a scale, so a half-width
+                      // panel renders at half the width of a full one
+                      width: `${(img.width / Math.max(...s.figure!.images.map((i) => i.width))) * 100}%`,
+                    }}
+                  />
+                ))}
+              </div>
+              <figcaption className="mt-3 max-w-[70ch] text-[12.5px] leading-relaxed text-[var(--subtle)]">
+                {s.figure.caption}
+              </figcaption>
+            </figure>
+          ) : null}
         </Section>
       ))}
 
