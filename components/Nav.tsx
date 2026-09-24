@@ -38,6 +38,12 @@ export function Nav() {
               </Link>
             );
           })}
+          <a
+            href="/Ellyess_Benmoufok_CV.pdf"
+            className="eyebrow text-[var(--accent)] transition-colors hover:text-[var(--text)]"
+          >
+            CV
+          </a>
         </div>
       </nav>
       <div className="scale-rule mb-14 md:mb-16" aria-hidden />

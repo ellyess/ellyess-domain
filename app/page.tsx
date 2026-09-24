@@ -69,6 +69,9 @@ export default function HomePage() {
           <a href={`mailto:${contact.email}`} className="link-arrow">
             {contact.email}
           </a>
+          <a href="/Ellyess_Benmoufok_CV.pdf" className="link-arrow" download>
+            Download CV (PDF)
+          </a>
           <a href="#work" className="link-arrow">
             Selected work
           </a>
