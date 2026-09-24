@@ -1,22 +1,15 @@
-import { Row, RowTitle } from "@/components/Row";
-
-type Item = {
-  title: string;
-  summary: string;
-  tech?: string;
-  meta?: string;
-  url?: string;
-};
+import { WorkRow } from "@/components/WorkRow";
+import type { Item } from "@/content/site";
 
 type PageShellProps = {
   title: string;
   intro: string;
-  items: Item[];
+  items?: Item[];
   children?: React.ReactNode;
   kicker?: string;
 };
 
-export function PageShell({ title, intro, items, children, kicker }: PageShellProps) {
+export function PageShell({ title, intro, items = [], children, kicker }: PageShellProps) {
   return (
     <main className="space-y-14">
       <header>
@@ -29,39 +22,13 @@ export function PageShell({ title, intro, items, children, kicker }: PageShellPr
         </p>
       </header>
 
-      <section className="border-t border-[var(--line-strong)]">
-        <div>
+      {items.length ? (
+        <section className="border-t border-[var(--line-strong)]">
           {items.map((item) => (
-            <Row
-              key={item.title}
-              meta={
-                item.meta ? (
-                  <span className="eyebrow text-[var(--subtle)]">{item.meta}</span>
-                ) : undefined
-              }
-            >
-              <RowTitle title={item.title} />
-              <p className="text-sm leading-relaxed text-[var(--muted)]">{item.summary}</p>
-              {item.tech ? (
-                <p className="pt-1 text-[11.5px] text-[var(--subtle)] [font-family:var(--font-mono)]">
-                  {item.tech}
-                </p>
-              ) : null}
-              {item.url ? (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link-arrow !mt-4"
-                  aria-label={`Open ${item.title}`}
-                >
-                  Open
-                </a>
-              ) : null}
-            </Row>
+            <WorkRow key={item.title} item={item} />
           ))}
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {children}
     </main>

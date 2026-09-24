@@ -1,4 +1,5 @@
 import { ProfileLinks } from "@/components/ProfileLinks";
+import { contact } from "@/content/site";
 
 export function Footer() {
   return (
@@ -6,7 +7,10 @@ export function Footer() {
       <div className="scale-rule scale-rule--up mb-7" aria-hidden />
       <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-4">
         <p className="eyebrow text-[var(--subtle)]">
-          © {new Date().getFullYear()} Ellyess Benmoufok
+          © {new Date().getFullYear()} Ellyess Benmoufok ·{" "}
+          <a href={`mailto:${contact.email}`} className="normal-case tracking-normal hover:text-[var(--accent)]">
+            {contact.email}
+          </a>
         </p>
         <ProfileLinks />
       </div>

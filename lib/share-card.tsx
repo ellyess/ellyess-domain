@@ -134,7 +134,7 @@ export async function renderShareCard(subline: string) {
           }}
         >
           <div style={{ fontFamily: "IBM Plex Sans", fontSize: 21, color: C.muted }}>
-            PhD, Imperial College London
+            Computational Science &amp; Data Science · Imperial
           </div>
           <div
             style={{
@@ -144,7 +144,7 @@ export async function renderShareCard(subline: string) {
               color: C.subtle,
             }}
           >
-            RESEARCH · CODE · OPEN SOURCE
+            AVAILABLE NOW · LONDON
           </div>
         </div>
       </div>

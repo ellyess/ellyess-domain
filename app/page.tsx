@@ -1,14 +1,22 @@
+import Link from "next/link";
 import { Section } from "@/components/Section";
 import { Row, RowBullets, RowTitle } from "@/components/Row";
-import { projects } from "@/content/site";
+import { WorkRow } from "@/components/WorkRow";
+import { contact, figures, fits, publications, work } from "@/content/site";
+import { phdConferred, phdStatus } from "@/lib/status";
+
+// Re-render daily so the PhD status flips on the conferral date
+export const revalidate = 86400;
 
 export default function HomePage() {
+  const conferred = phdConferred();
+
   return (
     <main className="space-y-24">
       {/* —— Hero —— */}
       <header className="pb-2">
         <p className="eyebrow hero-rise" style={{ animationDelay: "0.05s" }}>
-          Climate &amp; energy data science · Scientific Python · Research software engineering
+          Wind resource · Weather &amp; climate data validation · Research software
         </p>
         <h1
           className="hero-name display mt-10 text-[clamp(2.8rem,9.5vw,7rem)] text-[var(--text)] hero-rise"
@@ -21,60 +29,244 @@ export default function HomePage() {
           className="mt-11 max-w-[62ch] text-[15.5px] leading-relaxed text-[var(--muted)] hero-rise"
           style={{ animationDelay: "0.3s" }}
         >
-          Computational scientist and data scientist specialising in{" "}
-          <span className="text-[var(--text)]">climate and energy systems modelling, scientific Python, and reproducible research software</span>.
-          {" "}I recently completed my PhD at Imperial College London (Earth Science and
-          Engineering), working on high-resolution wind power modelling and statistical bias
-          correction of ERA5 reanalysis data, with peer-reviewed publications in Energy and
-          Energy Conversion and Management.
+          I build and validate models of weather and climate data, and the software that makes
+          them usable by other people.{" "}
+          <span className="text-[var(--text)]">
+            My PhD at Imperial College London corrected ERA5 reanalysis wind against observed
+            generation across 12 European countries
+          </span>
+          , then measured what that correction changes inside European energy system models.
         </p>
         <p
           className="mt-4 max-w-[62ch] text-[15.5px] leading-relaxed text-[var(--muted)] hero-rise"
           style={{ animationDelay: "0.3s" }}
         >
-          I&apos;m the author of PyVWF, an open-source Python library for bias correction of
-          reanalysis wind data, and I build tooling for large spatiotemporal datasets with
-          Xarray, Dask, and GeoPandas, spanning geospatial analysis, uncertainty quantification,
-          and the testing, packaging, and CI discipline that turns research code into something
-          others can build on.
+          I released the method as PyVWF, an open-source Python library with continuous
+          integration, typing, documentation and a Zenodo DOI. I am looking for data science,
+          modelling or research software roles in climate, energy, weather and climate risk.
         </p>
+
+        <dl
+          className="mt-10 grid max-w-[62ch] grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-1.5 text-[13.5px] hero-rise"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <dt className="eyebrow text-[var(--subtle)]">Status</dt>
+          <dd className="text-[var(--text)]">
+            Available now{conferred ? "" : " · PhD viva passed, conferral 1 October 2026"}
+          </dd>
+          <dt className="eyebrow text-[var(--subtle)]">Based</dt>
+          <dd className="text-[var(--text)]">
+            {contact.location} · {contact.pattern}
+          </dd>
+          <dt className="eyebrow text-[var(--subtle)]">Eligibility</dt>
+          <dd className="text-[var(--text)]">{contact.eligibility}</dd>
+        </dl>
+
         <div
           className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 hero-rise"
           style={{ animationDelay: "0.45s" }}
         >
-          <a href="mailto:benmoufok.ellyess@gmail.com" className="link-arrow">
-            Get in touch
+          <a href={`mailto:${contact.email}`} className="link-arrow">
+            {contact.email}
           </a>
-          <a href="/research" className="link-arrow">
-            View research
+          <a href="#work" className="link-arrow">
+            Selected work
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ellyessbenmoufok/"
+            target="_blank"
+            rel="noreferrer"
+            className="link-arrow"
+          >
+            LinkedIn
           </a>
         </div>
       </header>
 
-      {/* —— Education —— */}
-      <Section number="01" title="Education" kicker="2015 – 2026">
+      {/* —— Figures —— */}
+      <section aria-label="Headline figures">
+        <dl className="grid grid-cols-2 border-t border-[var(--line-strong)] md:grid-cols-4">
+          {figures.map((f) => (
+            <div
+              key={f.label}
+              className="flex flex-col-reverse justify-end border-b border-[var(--line)] py-6 pr-6 md:border-b-0 md:border-l md:pl-6 md:first:border-l-0 md:first:pl-0"
+            >
+              <dt className="mt-3 text-[12.5px] leading-snug text-[var(--muted)]">{f.label}</dt>
+              <dd className="display text-[clamp(2rem,4.5vw,2.75rem)] text-[var(--text)]">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* —— Where I fit —— */}
+      <Section number="01" title="Where I fit" kicker="Roles the record supports">
+        {fits.map((fit) => (
+          <Row
+            key={fit.role}
+            meta={<span className="eyebrow text-[var(--accent)]">{fit.role}</span>}
+          >
+            <p className="text-sm leading-relaxed text-[var(--text)]">{fit.summary}</p>
+            <p className="text-[13px] leading-relaxed text-[var(--muted)]">{fit.evidence}</p>
+          </Row>
+        ))}
+      </Section>
+
+      {/* —— Selected work —— */}
+      <div id="work" className="scroll-mt-8">
+        <Section number="02" title="Selected work" kicker="Code & artefacts">
+          {work.map((item) => (
+            <WorkRow key={item.title} item={item} />
+          ))}
+        </Section>
+      </div>
+
+      {/* —— How I work —— */}
+      <Section number="03" title="How I work" kicker="Method">
+        <Row meta={<span className="eyebrow text-[var(--subtle)]">Validation first</span>}>
+          <p className="text-sm leading-relaxed text-[var(--muted)]">
+            I tested whether machine learning could beat my geometric correction. Random
+            cross-validation gave R² of 0.35 to 0.41. Neighbouring sites share weather, so the
+            folds were not independent. Under spatial cross-validation the best model scored
+            0.295, and on an unseen country the tree models fell below zero. I reported the lower
+            figures and kept interpolation as the published method.
+          </p>
+        </Row>
+        <Row meta={<span className="eyebrow text-[var(--subtle)]">Decide before running</span>}>
+          <p className="text-sm leading-relaxed text-[var(--muted)]">
+            For the physics-informed work, the gates and thirteen predictions were fixed before
+            each run. Seven predictions failed; they are published as failures. A configuration chosen after seeing results was re-tested on four new
+            regions, lost to the simpler one in three, and the simpler one became the headline.
+          </p>
+        </Row>
+        <Row meta={<span className="eyebrow text-[var(--subtle)]">Build for the next user</span>}>
+          <p className="text-sm leading-relaxed text-[var(--muted)]">
+            PyVWF started as research code only I could read. When MSc and PhD students began
+            building on it, I made it a package. When a student could not load their own data, I
+            wrote a documented input framework with an example notebook, then used the same
+            pipeline to integrate a lot more data myself.
+          </p>
+        </Row>
+      </Section>
+
+      {/* —— Experience —— */}
+      <Section number="04" title="Experience" kicker="2019 – 2026">
         <Row
           meta={
             <>
-              <span className="eyebrow text-[var(--subtle)]">Oct 2021 – 2026</span>
-              <span className="eyebrow text-[var(--subtle)]">Earth Science &amp; Engineering</span>
+              <span className="eyebrow text-[var(--subtle)]">Oct 2021 – Jun 2026</span>
+              <span className="eyebrow text-[var(--subtle)]">London</span>
             </>
           }
         >
-          <RowTitle title="PhD, Computational Science" sub="Imperial College London" />
+          <RowTitle
+            title="PhD Researcher, Computational Science & Data Science"
+            sub="Imperial College London · EPSRC and Shell Industrial CASE award"
+          />
           <RowBullets
             bullets={[
-              "Developed PyVWF, modular wind simulation and reanalysis bias-correction tooling.",
-              "Built scalable ERA5 spatiotemporal pipelines integrated into PyPSA-Eur optimisation studies.",
-              "Published peer-reviewed work on high-resolution wind bias correction.",
+              "Designed and released PyVWF for granular bias correction of reanalysis wind, trained and validated at 1,729 control points across 12 European countries.",
+              "Extended PyPSA-Eur with a density-tiered wake-loss correction, gridded bias correction and a spatial splitting algorithm; validated against ENTSO-E 2023 generation.",
+              "Wrote seven Python API clients for national generation data and ERA5, with rate-limit backoff, request batching and resumable downloads.",
+              "Reported to an industry supervisor at Shell throughout, presenting results in terms of system cost for a commercial audience.",
             ]}
           />
         </Row>
         <Row
           meta={
             <>
-              <span className="eyebrow text-[var(--subtle)]">Oct 2019 – Oct 2020</span>
-              <span className="eyebrow text-[var(--subtle)]">Distinction</span>
+              <span className="eyebrow text-[var(--subtle)]">Jun 2021 – Sep 2021</span>
+              <span className="eyebrow text-[var(--subtle)]">London</span>
+            </>
+          }
+        >
+          <RowTitle title="Data Science Intern" sub="Shell" />
+          <RowBullets
+            bullets={[
+              "Proof of concept for statistically downscaling CMIP6 climate projections to asset level for renewable-energy variables, using machine learning on large, heterogeneous climate datasets, with offshore wind lidar observations as ground truth.",
+              "Supported separate operational weather-modelling work, retrieving data from HPC.",
+            ]}
+          />
+        </Row>
+        <Row
+          meta={
+            <>
+              <span className="eyebrow text-[var(--subtle)]">Dec 2020 – Mar 2021</span>
+              <span className="eyebrow text-[var(--subtle)]">London</span>
+            </>
+          }
+        >
+          <RowTitle title="Research App Developer" sub="Imperial College London" />
+          <RowBullets
+            bullets={[
+              "App Developer on I-Hex, the Island Health Explorer, with Maldives National University and the Banyan Tree Foundation.",
+              "Supervised land-cover and benthic-feature classification of satellite imagery over Maldivian atolls in Google Earth Engine; assembled the 861-point labelled training set.",
+            ]}
+          />
+        </Row>
+        <Row
+          meta={
+            <>
+              <span className="eyebrow text-[var(--subtle)]">Jan 2019 – Aug 2019</span>
+              <span className="eyebrow text-[var(--subtle)]">London</span>
+            </>
+          }
+        >
+          <RowTitle title="Data Scientist" sub="Link Humans" />
+          <RowBullets
+            bullets={[
+              "Most technical member of a five-person team. Wrote Python scrapers and pipelines to collect employer-branding data from across the web.",
+              "Classified large volumes of unstructured text and produced insight reports for more than ten clients on monthly to quarterly cycles.",
+            ]}
+          />
+        </Row>
+        <Row
+          meta={
+            <>
+              <span className="eyebrow text-[var(--subtle)]">2020 – 2024</span>
+              <span className="eyebrow text-[var(--subtle)]">Imperial</span>
+            </>
+          }
+        >
+          <RowTitle title="Research guidance and teaching" />
+          <RowBullets
+            bullets={[
+              "Co-supervised an MSc research project, named alongside Prof. Matthew Piggott, whose work became a co-authored paper in Energy.",
+              "Guided three MSc and PhD students through using and extending PyVWF and PyPSA-Eur, with a weekly session and written updates.",
+              "Teaching assistant for MSc scientific computing and numerical methods coursework sessions.",
+            ]}
+          />
+        </Row>
+      </Section>
+
+      {/* —— Education —— */}
+      <Section number="05" title="Education" kicker="2015 – 2026">
+        <Row
+          meta={
+            <>
+              <span className="eyebrow text-[var(--subtle)]">Oct 2021 – Jun 2026</span>
+              <span className="eyebrow text-[var(--subtle)]">{phdStatus()}</span>
+            </>
+          }
+        >
+          <RowTitle
+            title="PhD in Computational Science & Data Science"
+            sub="Imperial College London · Earth Science & Engineering"
+          />
+          <p className="text-sm leading-relaxed text-[var(--muted)]">
+            Thesis: <em>Data Science-Enhanced Wind Power Modelling: From Reanalysis Correction to
+            Energy System Representation</em>.{" "}
+            <Link href="/research" className="text-[var(--accent)] hover:underline">
+              Findings
+            </Link>
+          </p>
+        </Row>
+        <Row
+          meta={
+            <>
+              <span className="eyebrow text-[var(--subtle)]">2019 – 2020</span>
+              <span className="eyebrow text-[var(--subtle)]">Distinction · DIC</span>
             </>
           }
         >
@@ -82,262 +274,97 @@ export default function HomePage() {
             title="MSc, Applied Computational Science and Engineering"
             sub="Imperial College London"
           />
-          <RowBullets
-            bullets={[
-              "Numerical methods, optimisation, and parallel programming in Python and C++.",
-              "Research project on multi-output regression with GANs (co-authored publication).",
-            ]}
-          />
+          <p className="text-sm leading-relaxed text-[var(--muted)]">
+            Top marks in Modern Programming Methods (92.4) and Inversion and Optimisation (82.2).
+            Dissertation on Wasserstein GANs for multi-output regression, which led to a
+            co-authored paper.
+          </p>
         </Row>
         <Row
           meta={
             <>
-              <span className="eyebrow text-[var(--subtle)]">Sep 2015 – Jun 2018</span>
+              <span className="eyebrow text-[var(--subtle)]">2015 – 2018</span>
               <span className="eyebrow text-[var(--subtle)]">First Class Honours</span>
             </>
           }
         >
           <RowTitle title="BSc, Physics" sub="University of Surrey" />
-          <RowBullets
-            bullets={[
-              "Foundations in mathematical modelling, numerical analysis, and physical systems.",
-              "Applied computational techniques (Fortran, Python) to scientific problem-solving.",
-            ]}
-          />
-        </Row>
-      </Section>
-
-      {/* —— Experience —— */}
-      <Section number="02" title="Experience" kicker="2019 – present">
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Oct 2020 – Oct 2024</span>}>
-          <RowTitle title="Graduate Teaching Assistant" sub="Imperial College London" />
-          <RowBullets
-            bullets={[
-              "Supported teaching and assessment across computational science modules.",
-            ]}
-          />
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Jun 2021 – Sep 2021</span>}>
-          <RowTitle title="Data Science Intern" sub="Shell" />
-          <RowBullets
-            bullets={[
-              "Applied data science methods to energy-relevant datasets; delivered analysis and prototypes.",
-            ]}
-          />
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Dec 2020 – Mar 2021</span>}>
-          <RowTitle title="App Developer" sub="Imperial College London" />
-          <RowBullets
-            bullets={[
-              "Contributed to I-Hex, a Google Earth Engine web application suite (Imperial College London, Maldives National University, Banyan Tree Foundation) surfacing decades of satellite remote-sensing and climate data for island environmental monitoring in the Indian Ocean.",
-              "Applied machine learning to satellite imagery for land-cover classification and feature detection.",
-            ]}
-          />
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Jan 2019 – Aug 2019</span>}>
-          <RowTitle title="Data Scientist" sub="Link Humans" />
-          <RowBullets
-            bullets={[
-              "Most technical member of the team; led automation of the Employer Brand Index, the company's core data product.",
-              "Built web scrapers and data-cleaning pipelines to source and standardise employer branding signals.",
-              "Prototyped the data pipeline intended to support training a language model on the collected corpus.",
-            ]}
-          />
         </Row>
       </Section>
 
       {/* —— Publications —— */}
-      <Section number="03" title="Selected Publications" kicker="Peer-reviewed">
-        <Row
-          meta={
-            <span className="eyebrow text-[var(--subtle)]">Energy Conv. &amp; Mgmt · 2026</span>
-          }
-        >
-          <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[var(--text)]">
-            Geographic variability in reanalysis wind speed biases: A high-resolution bias
-            correction approach for UK wind energy
-          </h3>
-          <p className="text-[13.5px] leading-relaxed text-[var(--muted)]">
-            Wang, Y., Warder, S., <Strong>Benmoufok, E.F.</Strong>, Wynn, A., Buxton, O.R.H.,
-            Staffell, I., &amp; Piggott, M.D.
-          </p>
-          <p className="text-xs italic text-[var(--subtle)]">
-            Energy Conversion and Management, 352, 121066.
-          </p>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Extends the multi-country high-resolution bias correction framework PyVWF.
-          </p>
-          <a
-            href="https://doi.org/10.1016/j.enconman.2026.121066"
-            target="_blank"
-            rel="noreferrer"
-            className="link-arrow !mt-4"
+      <Section number="06" title="Publications" kicker="Peer-reviewed">
+        {publications.map((p) => (
+          <Row
+            key={p.url}
+            meta={
+              <>
+                <span className="eyebrow text-[var(--subtle)]">{p.short}</span>
+                <span className="eyebrow text-[var(--subtle)]">{p.role}</span>
+              </>
+            }
           >
-            View publication
-          </a>
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Energy · 2024</span>}>
-          <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[var(--text)]">
-            Improving wind power modelling through granular spatial and temporal bias correction
-            of reanalysis data
-          </h3>
-          <p className="text-[13.5px] leading-relaxed text-[var(--muted)]">
-            <Strong>Benmoufok, E.F.</Strong>, Warder, S., Zhu, E., Bhaskaran, B., Staffell, I.,
-            &amp; Piggott, M.D.
-          </p>
-          <p className="text-xs italic text-[var(--subtle)]">Energy, 313, 133759.</p>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Lead-author study introducing PyVWF, a multi-country high-resolution bias correction
-            framework for reanalysis-driven wind power modelling.
-          </p>
-          <a
-            href="https://doi.org/10.1016/j.energy.2024.133759"
-            target="_blank"
-            rel="noreferrer"
-            className="link-arrow !mt-4"
-          >
-            View publication
-          </a>
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Applied Sciences · 2022</span>}>
-          <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[var(--text)]">
-            Multi-Output Regression with Generative Adversarial Networks (MOR-GANs)
-          </h3>
-          <p className="text-[13.5px] leading-relaxed text-[var(--muted)]">
-            Phillips, T.R.F., Heaney, C.E., <Strong>Benmoufok, E.</Strong>, Li, Q., Hua, L.,
-            Porter, A.E., Chung, K.F., &amp; Pain, C.C.
-          </p>
-          <p className="text-xs italic text-[var(--subtle)]">Applied Sciences, 12(18), 9209.</p>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Co-authored study developing GAN approaches for multi-output regression in scientific
-            modelling.
-          </p>
-          <a
-            href="https://doi.org/10.3390/app12189209"
-            target="_blank"
-            rel="noreferrer"
-            className="link-arrow !mt-4"
-          >
-            View publication
-          </a>
-        </Row>
-      </Section>
-
-      {/* —— Open Source & Research Software —— */}
-      <Section number="04" title="Open Source & Research Software" kicker="Reproducible research">
-        <Row
-          meta={
-            <>
-              <span className="eyebrow text-[var(--subtle)]">Author</span>
-              <span className="eyebrow text-[var(--accent)]">JOSS submission in preparation</span>
-            </>
-          }
-        >
-          <RowTitle title="PyVWF (Python Virtual Wind Farm)" />
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            An open-source Python library for statistical bias correction of reanalysis wind data
-            and wind power capacity factor estimation, developed through my PhD and the
-            peer-reviewed publications above.
-          </p>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Maintained as reproducible research software: a pytest suite with coverage, linting
-            with ruff, and GitHub Actions CI across Python 3.10 to 3.12, packaged for pip install.
-            A submission to the Journal of Open Source Software (JOSS) is in preparation.
-          </p>
-          <p className="pt-1 text-[11.5px] text-[var(--subtle)] [font-family:var(--font-mono)]">
-            Python · Xarray · Dask · GeoPandas · SciPy · scikit-learn
-          </p>
-          <a
-            href="https://github.com/ellyess/PyVWF"
-            target="_blank"
-            rel="noreferrer"
-            className="link-arrow !mt-4"
-          >
-            View on GitHub
-          </a>
-        </Row>
-        <Row meta={<span className="eyebrow text-[var(--subtle)]">Research code</span>}>
-          <RowTitle title="PyPSA-Eur wind integration" />
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Energy systems optimisation extensions integrating improved wind modelling into the
-            PyPSA-Eur ecosystem, with Snakemake workflows carrying corrected reanalysis fields
-            into continental-scale planning studies.
-          </p>
-          <p className="pt-1 text-[11.5px] text-[var(--subtle)] [font-family:var(--font-mono)]">
-            Python · PyPSA · Atlite · Snakemake · ERA5
-          </p>
-          <a
-            href="https://github.com/ellyess/pypsa-eur-wind"
-            target="_blank"
-            rel="noreferrer"
-            className="link-arrow !mt-4"
-          >
-            View on GitHub
-          </a>
-        </Row>
+            <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[var(--text)]">
+              {p.title}
+            </h3>
+            <p className="text-[13.5px] leading-relaxed text-[var(--muted)]">
+              <Authors list={p.authors} />
+            </p>
+            <p className="text-xs italic text-[var(--subtle)]">{p.venue}</p>
+            <a href={p.url} target="_blank" rel="noreferrer" className="link-arrow !mt-4">
+              View publication
+            </a>
+          </Row>
+        ))}
       </Section>
 
       {/* —— Stack —— */}
-      <Section number="05" title="Technical Stack" kicker="Working tools">
-        <SpecRow label="Languages" value="Python · JavaScript · C++ · Fortran · GDScript" />
-        <SpecRow label="Scientific" value="NumPy · Pandas · Xarray · SciPy · Dask" />
-        <SpecRow label="Energy / Optimisation" value="PyPSA · PyPSA-Eur · Atlite · Gurobi" />
-        <SpecRow label="Geo / Climate" value="GeoPandas · Shapely · Rasterio · ERA5" />
-        <SpecRow label="Workflow" value="Snakemake · Conda · Git · GitHub" />
+      <Section number="07" title="Technical stack" kicker="Working tools">
+        <SpecRow label="Languages" value="Python (advanced) · SQL (DuckDB) · JavaScript · TypeScript · R" />
+        <SpecRow label="Scientific data" value="NumPy · SciPy · Pandas · Xarray · Dask · NetCDF · Zarr · Matplotlib" />
+        <SpecRow label="Machine learning" value="scikit-learn · PyTorch · TensorFlow / Keras · spatial cross-validation · GANs" />
+        <SpecRow label="Weather & climate" value="ERA5 · MERRA-2 · CMIP6 · Copernicus CDS · ENTSO-E" />
+        <SpecRow label="Geospatial" value="GeoPandas · Rasterio · Cartopy · Shapely · pyproj · Google Earth Engine · IDW / kriging" />
+        <SpecRow label="Energy & risk" value="PyPSA-Eur · Atlite · Gurobi · wake modelling · Oasis LMF" />
         <SpecRow
           label="Software practice"
-          value="pytest + coverage · GitHub Actions CI · ruff · Packaging (pyproject)"
+          value="pytest · GitHub Actions · ruff · mypy · Sphinx · Docker · pre-commit · semantic versioning"
         />
-        <SpecRow label="Writing" value="LaTeX · Matplotlib" />
-        <SpecRow label="Creative" value="TouchDesigner · Ableton Live · Godot" />
+        <SpecRow label="Workflow" value="Snakemake · Conda · Git · Unix shell · Claude Code" />
+        <SpecRow label="Certification" value="Microsoft Azure Fundamentals (AZ-900)" />
       </Section>
 
-      {/* —— Beyond Research —— */}
-      <Section number="06" title="Beyond Research" kicker="Creative practice">
+      {/* —— Outside work —— */}
+      <Section number="08" title="Outside work" kicker="Creative practice">
         <Row>
           <p className="text-sm leading-relaxed text-[var(--muted)]">
-            Outside computational energy modelling, I work on real-time audio-visual systems
-            and creative coding, with generative visuals in TouchDesigner and music production
-            in Ableton Live, oriented toward interactive and performance-driven workflows.
-          </p>
-          <p className="text-sm leading-relaxed text-[var(--muted)]">
-            I&apos;m also developing{" "}
-            <span className="font-medium text-[var(--text)]">Fool&apos;s Ascension</span>, a
-            roguelite card game built on Russian Durak. Branching 3-act runs, persistent
-            meta-progression, and tightly-systemised encounter design in Godot.
+            I produce music in Ableton Live, build generative visuals in TouchDesigner, and am
+            developing a roguelite card game in Godot.{" "}
+            <Link href="/music" className="text-[var(--accent)] hover:underline">
+              Music
+            </Link>
           </p>
         </Row>
-      </Section>
-
-      {/* —— Selected Work —— */}
-      <Section number="07" title="Selected Work" kicker="Projects & artefacts">
-        {projects.map((project) => (
-          <Row
-            key={project.title}
-            meta={<span className="eyebrow text-[var(--muted)]">{project.kind}</span>}
-          >
-            <RowTitle title={project.title} />
-            <p className="text-sm leading-relaxed text-[var(--muted)]">{project.summary}</p>
-            {project.url ? (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                className="link-arrow !mt-4"
-                aria-label={`Open ${project.title}`}
-              >
-                Open
-              </a>
-            ) : null}
-          </Row>
-        ))}
       </Section>
     </main>
   );
 }
 
-function Strong({ children }: { children: React.ReactNode }) {
-  return <span className="font-medium text-[var(--text)]">{children}</span>;
+function Authors({ list }: { list: string[] }) {
+  return (
+    <>
+      {list.map((a, i) => {
+        const self = a.startsWith("**");
+        const name = a.replaceAll("**", "");
+        return (
+          <span key={a}>
+            {self ? <span className="font-medium text-[var(--text)]">{name}</span> : name}
+            {i < list.length - 1 ? ", " : ""}
+          </span>
+        );
+      })}
+    </>
+  );
 }
 
 function SpecRow({ label, value }: { label: string; value: string }) {

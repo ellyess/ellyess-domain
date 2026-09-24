@@ -1,13 +1,16 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
 import { musicEmbeds, musicItems } from "@/content/site";
+
+export const metadata: Metadata = { title: "Music", alternates: { canonical: "/music" } };
 
 export default function MusicPage() {
   return (
     <PageShell
       title="Music"
       kicker="Creative practice"
-      intro="A second discipline run with the same care as the technical work — structure, clarity, and iterative craft. Released tracks stream below."
+      intro="Music production and sound design as ellyxss, run with the same care as the technical work. Released tracks stream below."
       items={musicItems}
     >
       <Section title="Releases" kicker="Streaming">

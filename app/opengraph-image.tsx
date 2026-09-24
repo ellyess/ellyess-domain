@@ -5,6 +5,6 @@ export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return renderShareCard(
-    "Scientific Python, reanalysis modelling, and research software engineering.",
+    "Wind resource modelling, climate data validation and research software in Python.",
   );
 }
