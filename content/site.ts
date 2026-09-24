@@ -10,6 +10,7 @@ export type Item = {
   meta?: string;
   url?: string;
   linkLabel?: string;
+  slug?: string;
 };
 
 export const contact = {
@@ -82,6 +83,7 @@ export const fits = [
 export const work: Item[] = [
   {
     title: "PyVWF: bias-corrected wind power from reanalysis",
+    slug: "pyvwf",
     meta: "Author · open source",
     summary:
       "A Python rewrite of the Virtual Wind Farm model behind the wind simulations on Renewables.ninja, implementing the granular bias-correction method from my 2024 Energy paper. It trains correction factors against observed generation at turbine, regional or national scale and applies them to ERA5. I wrote every commit in the v0.5.1 release, which carries a Zenodo DOI.",
@@ -91,6 +93,7 @@ export const work: Item[] = [
   },
   {
     title: "Wind representation in PyPSA-Eur",
+    slug: "pypsa-eur-wind",
     meta: "Public fork · PhD Part II",
     summary:
       "Extended the open European energy system model with a density-tiered wake-loss correction, the gridded PyVWF corrections, and a spatial splitting algorithm that decouples offshore resource resolution from network topology. Factorial studies (bias × wake × resolution) across a regional North Sea system and a 25-country network. Every manuscript figure regenerates from one script, and the headline claims are held under automated test.",
@@ -100,6 +103,7 @@ export const work: Item[] = [
   },
   {
     title: "Physics-informed wind correction",
+    slug: "physics-informed-correction",
     meta: "Post-PhD · experimental",
     summary:
       "A constrained model meant to transfer corrections to regions with no observations. Gates and thirteen predictions were fixed before each run. As registered it beat uncorrected ERA5 in 5 of 5 held-out regions, with thin margins in two. Seven predictions failed and are published as failures. Two physics extensions were built, tested and rejected.",
