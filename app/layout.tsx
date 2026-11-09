@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Sora } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({
+// TeX Gyre Heros, a free Helvetica clone (GUST Font License), the same face as the CV.
+// It ships regular and bold only, so medium and semibold both map to bold.
+const sans = localFont({
   variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  src: [
+    { path: "./fonts/texgyreheros-regular.woff2", weight: "300 400", style: "normal" },
+    { path: "./fonts/texgyreheros-italic.woff2", weight: "300 400", style: "italic" },
+    { path: "./fonts/texgyreheros-bold.woff2", weight: "500 800", style: "normal" },
+    { path: "./fonts/texgyreheros-bolditalic.woff2", weight: "500 800", style: "italic" },
+  ],
+  fallback: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
 });
 
 const mono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
-});
-
-// Display face is reserved for the name and wordmark only
-const display = Sora({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "500"],
 });
 
 const TITLE = "Ellyess Benmoufok | Climate Data Scientist & Research Software Engineer";
@@ -123,7 +124,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -111,7 +111,7 @@ body {
   }
 
   .display {
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-weight: 400;
     letter-spacing: -0.018em;
   }
