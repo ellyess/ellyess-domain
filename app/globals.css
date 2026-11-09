@@ -5,46 +5,46 @@
    to the wind field and small hover responses. */
 
 :root {
-  --bg: #eef1f0;
-  --text: #37353e;
-  --muted: #55535d;
+  --bg: #fff6e0;
+  --text: #272829;
+  --muted: #4a4f5e;
   /* Small-text tier: at least 4.5:1 on --bg and --card */
-  --subtle: #605e68;
-  --line: rgba(55, 53, 62, 0.14);
-  --line-strong: rgba(55, 53, 62, 0.3);
-  --card: #ffffff;
-  --img-bg: #ffffff;
-  --accent: #715a5a;
-  --accent-soft: rgba(113, 90, 90, 0.1);
+  --subtle: #565c6d;
+  --line: rgba(39, 40, 41, 0.13);
+  --line-strong: rgba(39, 40, 41, 0.3);
+  --card: #fffbf1;
+  --img-bg: #fffbf1;
+  --accent: #61677a;
+  --accent-soft: rgba(97, 103, 122, 0.1);
   --ok: #2f7a57;
   --ok-soft: rgba(47, 122, 87, 0.12);
   --warn: #95581a;
-  --stream: #9ea4a7;
-  --dot: rgba(55, 53, 62, 0.14);
-  --shadow: rgba(40, 36, 46, 0.25);
+  --stream: #a9acb3;
+  --dot: rgba(39, 40, 41, 0.13);
+  --shadow: rgba(39, 40, 41, 0.22);
   --fig-filter: none;
-  --fig-blend: normal;
+  --fig-blend: multiply;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #37353e;
-    --text: #d3dad9;
-    --muted: #b3b9ba;
-    --subtle: #adb3b5;
-    --line: rgba(211, 218, 217, 0.12);
-    --line-strong: rgba(211, 218, 217, 0.3);
-    --card: #44444e;
-    --img-bg: #3e3c46;
-    --accent: #d0aeaa;
-    --accent-soft: rgba(113, 90, 90, 0.45);
+    --bg: #272829;
+    --text: #d8d9da;
+    --muted: #adb0b4;
+    --subtle: #a2a6ab;
+    --line: rgba(216, 217, 218, 0.11);
+    --line-strong: rgba(216, 217, 218, 0.28);
+    --card: #2f3132;
+    --img-bg: #2c2d2e;
+    --accent: #fff6e0;
+    --accent-soft: rgba(97, 103, 122, 0.35);
     --ok: #9cc7ae;
-    --ok-soft: rgba(156, 199, 174, 0.18);
-    --warn: #dcae86;
-    --stream: #8a8794;
-    --dot: rgba(211, 218, 217, 0.12);
-    --shadow: rgba(10, 8, 14, 0.55);
+    --ok-soft: rgba(156, 199, 174, 0.16);
+    --warn: #e0b48a;
+    --stream: #61677a;
+    --dot: rgba(216, 217, 218, 0.1);
+    --shadow: rgba(0, 0, 0, 0.55);
     --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
     --fig-blend: screen;
     color-scheme: dark;
@@ -52,22 +52,22 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #37353e;
-  --text: #d3dad9;
-  --muted: #b3b9ba;
-  --subtle: #adb3b5;
-  --line: rgba(211, 218, 217, 0.12);
-  --line-strong: rgba(211, 218, 217, 0.3);
-  --card: #44444e;
-  --img-bg: #3e3c46;
-  --accent: #d0aeaa;
-  --accent-soft: rgba(113, 90, 90, 0.45);
+  --bg: #272829;
+  --text: #d8d9da;
+  --muted: #adb0b4;
+  --subtle: #a2a6ab;
+  --line: rgba(216, 217, 218, 0.11);
+  --line-strong: rgba(216, 217, 218, 0.28);
+  --card: #2f3132;
+  --img-bg: #2c2d2e;
+  --accent: #fff6e0;
+  --accent-soft: rgba(97, 103, 122, 0.35);
   --ok: #9cc7ae;
-  --ok-soft: rgba(156, 199, 174, 0.18);
-  --warn: #dcae86;
-  --stream: #8a8794;
-  --dot: rgba(211, 218, 217, 0.12);
-  --shadow: rgba(10, 8, 14, 0.55);
+  --ok-soft: rgba(156, 199, 174, 0.16);
+  --warn: #e0b48a;
+  --stream: #61677a;
+  --dot: rgba(216, 217, 218, 0.1);
+  --shadow: rgba(0, 0, 0, 0.55);
   --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
   --fig-blend: screen;
   color-scheme: dark;
