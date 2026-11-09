@@ -29,22 +29,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #272829;
-    --text: #d8d9da;
-    --muted: #adb0b4;
-    --subtle: #a2a6ab;
-    --line: rgba(216, 217, 218, 0.11);
-    --line-strong: rgba(216, 217, 218, 0.28);
-    --card: #2e3033;
-    --img-bg: #2b2d30;
+    --bg: #111316;
+    --text: #e8eaed;
+    --muted: #b3b8bf;
+    --subtle: #9ba1a9;
+    --line: rgba(232, 234, 237, 0.11);
+    --line-strong: rgba(232, 234, 237, 0.26);
+    --card: #1a1d21;
+    --img-bg: #16191c;
     --accent: #b4c0da;
     --accent-soft: rgba(97, 103, 122, 0.4);
     --ok: #9cc7ae;
     --ok-soft: rgba(156, 199, 174, 0.16);
     --warn: #e0b48a;
-    --stream: #61677a;
-    --dot: rgba(216, 217, 218, 0.1);
-    --shadow: rgba(0, 0, 0, 0.55);
+    --stream: #5a6274;
+    --dot: rgba(232, 234, 237, 0.09);
+    --shadow: rgba(0, 0, 0, 0.6);
     --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
     --fig-blend: screen;
     color-scheme: dark;
@@ -52,22 +52,22 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #272829;
-  --text: #d8d9da;
-  --muted: #adb0b4;
-  --subtle: #a2a6ab;
-  --line: rgba(216, 217, 218, 0.11);
-  --line-strong: rgba(216, 217, 218, 0.28);
-  --card: #2e3033;
-  --img-bg: #2b2d30;
+  --bg: #111316;
+  --text: #e8eaed;
+  --muted: #b3b8bf;
+  --subtle: #9ba1a9;
+  --line: rgba(232, 234, 237, 0.11);
+  --line-strong: rgba(232, 234, 237, 0.26);
+  --card: #1a1d21;
+  --img-bg: #16191c;
   --accent: #b4c0da;
   --accent-soft: rgba(97, 103, 122, 0.4);
   --ok: #9cc7ae;
   --ok-soft: rgba(156, 199, 174, 0.16);
   --warn: #e0b48a;
-  --stream: #61677a;
-  --dot: rgba(216, 217, 218, 0.1);
-  --shadow: rgba(0, 0, 0, 0.55);
+  --stream: #5a6274;
+  --dot: rgba(232, 234, 237, 0.09);
+  --shadow: rgba(0, 0, 0, 0.6);
   --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
   --fig-blend: screen;
   color-scheme: dark;
