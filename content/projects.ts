@@ -35,7 +35,7 @@ export const projects: Project[] = [
     summary:
       "ERA5 is the default input for simulating wind power, and its wind speeds are biased in ways that change with place and season. PyVWF learns those biases from observed generation and corrects them, at whatever spatial and temporal resolution the data can support.",
     description:
-      "Case study: PyVWF, an open-source Python library for granular bias correction of ERA5 reanalysis wind against observed generation, trained at 1,729 control points across 12 European countries.",
+      "Case study: PyVWF, an open-source Python library for granular bias correction of ERA5 reanalysis wind against observed generation, trained at 1,729 control points across 12 European countries and since validated in fifteen regions on four continents.",
     tech: "Python · Xarray · Dask · SciPy · scikit-learn · GeoPandas · pytest · GitHub Actions · ruff · mypy · Sphinx · Docker",
     links: [
       { label: "GitHub", href: "https://github.com/ellyess/PyVWF" },
@@ -80,6 +80,7 @@ export const projects: Project[] = [
           "Europe: corrections from 1,729 control points in 12 countries, gridded over 23,989 ERA5 cells (161 × 149), reduced capacity-factor MAE by 16 to 79% against uncorrected ERA5.",
           "Borrowing information across Europe outperformed country-specific corrections in several countries.",
           "Regions where observation density could not support a reliable value were masked rather than published as part of one unqualified surface.",
+          "After the PhD: validated against observed generation in fifteen regions on four continents, each trained on earlier years and scored on a held-out year. The scorecard says where it does not help: error rises in France, and Italy and Portugal are suspended.",
         ],
       },
       {
@@ -102,12 +103,12 @@ export const projects: Project[] = [
         title: "Engineering",
         kicker: "Research code made usable",
         bullets: [
-          "I wrote all 310 commits in the v0.5.1 release, published with a Zenodo DOI.",
-          "469 test functions across 44 files in that release; CI on a Python 3.10 to 3.12 matrix with ruff and mypy enforced, PEP 561 typing, and Sphinx docs built with warnings as errors.",
+          "v0.6.0 (October 2026) carries its own Zenodo DOI: 868 commits and 94 merged pull requests, maintained and directed by me. The method and its first validation were written by hand during the PhD; since mid-2026 Claude Code writes much of the code under my direction, and the repository says so.",
+          "963 test functions across 105 files in that release; CI on a Python 3.10 to 3.13 matrix with ruff and mypy enforced, PEP 561 typing, and Sphinx docs built with warnings as errors.",
           "Docker exercised in CI, every example script executed in CI, import-linter layer contracts, pre-commit, Dependabot and semantic versioning.",
           "The validation scorecard is re-run end to end from one commit on a clean tree. Every run manifest records the commit, whether the tree was dirty, and library versions. Superseded results are kept with dated correction notices, not deleted.",
           "The scorecard flags its own weak rows: 7 of 9 turbine-level rows rest on at least one degenerate fit, and only Denmark and New Zealand are clean.",
-          "Refactored and extended with Claude Code from early 2026, on top of the pre-2026 research code.",
+          "After the release I audited and simplified the repository: the finished studies moved to an archived tag with its own DOI, so the main branch holds only the maintained package.",
         ],
       },
       {
@@ -238,7 +239,7 @@ export const projects: Project[] = [
           "Zero-shot, leave-one-region-out across Denmark, Germany, the UK, the US and Brazil: as registered, it beat uncorrected ERA5 in 5 of 5 and degraded none. The smallest margins, 0.0025 (US) and 0.0027 (UK) in RMSE, are not yet resampled.",
           "Against the incumbent random-forest transfer it won in 4 of 5, the exception being Germany, where turbine locations are postcode centroids. Mean skill was +0.238 against the random forest's −0.099. That comparison is not yet reproducible from a single commit.",
           "The unconstrained ablation was worse than doing nothing in every region, so the gain comes from the constraints.",
-          "Leave-one-country-out across Europe (working branch, unpublished): trained on eight countries, it cut national monthly RMSE in 8 of 9, to a median 29% of the uncorrected error, recovering a median 94% of what fitting inside the country achieves. It failed in France, whose uncorrected series was already unbiased, making its error 78% worse.",
+          "A leave-one-country-out study across Europe, reported here earlier, was withdrawn on 25 October 2026. Belgium's and France's observation files did not measure the whole fleet, and re-scored on rebuilt files the result no longer holds. It awaits a rerun, so only the five-region result above stands.",
         ],
       },
       {
@@ -247,7 +248,6 @@ export const projects: Project[] = [
           "Seven of the thirteen registered predictions failed. They are published as failures rather than removed.",
           "Two physics extensions were built, tested and rejected. A wake term cut the dense-fleet residual span by 61% and cost transfer in all five regions. A profile-curvature term improved Germany alone and cost mean skill 0.0089 against a 0.005 tolerance.",
           "A configuration chosen after seeing results was re-tested on four regions never used as holdouts, with the consequence registered first. It passed transfer 4 of 4 but lost to the simpler configuration in 3 of 4, so the simpler one became the headline.",
-          "Adding six non-European regions to the training pool did not help Europe, as predicted.",
         ],
       },
       {

@@ -32,8 +32,8 @@ export const figures = [
     label: "NRMSE against ENTSO-E 2023 generation, improving 9 of 11 country and technology series",
   },
   {
-    value: "469",
-    label: "Test functions in the PyVWF v0.5.1 release, run in CI with ruff and mypy",
+    value: "963",
+    label: "Test functions in the PyVWF v0.6.0 release, run in CI with ruff and mypy",
   },
   {
     value: "3",
@@ -86,7 +86,7 @@ export const work: Item[] = [
     slug: "pyvwf",
     meta: "Author · open source",
     summary:
-      "A Python rewrite of the Virtual Wind Farm model behind the wind simulations on Renewables.ninja, implementing the granular bias-correction method from my 2024 Energy paper. It trains correction factors against observed generation at turbine, regional or national scale and applies them to ERA5. I wrote every commit in the v0.5.1 release, which carries a Zenodo DOI.",
+      "A Python rewrite of the Virtual Wind Farm model behind the wind simulations on Renewables.ninja, implementing the granular bias-correction method from my 2024 Energy paper. It trains correction factors against observed generation at turbine, regional or national scale and applies them to ERA5. Since the PhD it has been validated against observed generation in fifteen regions on four continents. The v0.6.0 release carries a Zenodo DOI; I maintain and direct it, with Claude Code writing much of the code since mid-2026.",
     tech: "Python · Xarray · Dask · SciPy · scikit-learn · pytest · GitHub Actions · ruff · mypy · Sphinx · Docker",
     url: "https://github.com/ellyess/PyVWF",
     linkLabel: "View on GitHub",
@@ -100,6 +100,15 @@ export const work: Item[] = [
     tech: "Python · PyPSA · Atlite · Snakemake · Gurobi · GeoPandas",
     url: "https://github.com/ellyess/pypsa-eur-wind",
     linkLabel: "View on GitHub",
+  },
+  {
+    title: "Wind Generation Sources",
+    meta: "Open data catalogue · 2026",
+    summary:
+      "An open catalogue of where to find observed wind generation data, country by country: 154 sources covering 164 countries, each with what it publishes, how to get it, its licence as read on the publisher's own page, and its known traps with evidence. A weekly GitHub Actions job checks every link, runs the access snippets and compares each keyless source's 2024 total with a national reference. Built with Claude Code under my direction; I have reviewed 15 of the 154 entries so far, and the site marks the rest as unreviewed.",
+    tech: "Python · JSON Schema · pytest · GitHub Actions · Svelte · MapLibre",
+    url: "https://ellyess.github.io/wind-generation-sources/",
+    linkLabel: "Open catalogue",
   },
   {
     title: "Physics-informed wind correction",
