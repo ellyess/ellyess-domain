@@ -5,23 +5,23 @@
    to the wind field and small hover responses. */
 
 :root {
-  --bg: #fff6e0;
+  --bg: #ffffff;
   --text: #272829;
   --muted: #4a4f5e;
   /* Small-text tier: at least 4.5:1 on --bg and --card */
   --subtle: #565c6d;
-  --line: rgba(39, 40, 41, 0.13);
-  --line-strong: rgba(39, 40, 41, 0.3);
-  --card: #fffbf1;
-  --img-bg: #fffbf1;
-  --accent: #61677a;
+  --line: rgba(39, 42, 51, 0.12);
+  --line-strong: rgba(39, 42, 51, 0.28);
+  --card: #f5f6f8;
+  --img-bg: #f5f6f8;
+  --accent: #4f5670;
   --accent-soft: rgba(97, 103, 122, 0.1);
   --ok: #2f7a57;
   --ok-soft: rgba(47, 122, 87, 0.12);
   --warn: #95581a;
-  --stream: #a9acb3;
-  --dot: rgba(39, 40, 41, 0.13);
-  --shadow: rgba(39, 40, 41, 0.22);
+  --stream: #b0b6c2;
+  --dot: rgba(39, 42, 51, 0.12);
+  --shadow: rgba(30, 36, 52, 0.18);
   --fig-filter: none;
   --fig-blend: multiply;
   color-scheme: light;
@@ -35,10 +35,10 @@
     --subtle: #a2a6ab;
     --line: rgba(216, 217, 218, 0.11);
     --line-strong: rgba(216, 217, 218, 0.28);
-    --card: #2f3132;
-    --img-bg: #2c2d2e;
-    --accent: #fff6e0;
-    --accent-soft: rgba(97, 103, 122, 0.35);
+    --card: #2e3033;
+    --img-bg: #2b2d30;
+    --accent: #b4c0da;
+    --accent-soft: rgba(97, 103, 122, 0.4);
     --ok: #9cc7ae;
     --ok-soft: rgba(156, 199, 174, 0.16);
     --warn: #e0b48a;
@@ -58,10 +58,10 @@
   --subtle: #a2a6ab;
   --line: rgba(216, 217, 218, 0.11);
   --line-strong: rgba(216, 217, 218, 0.28);
-  --card: #2f3132;
-  --img-bg: #2c2d2e;
-  --accent: #fff6e0;
-  --accent-soft: rgba(97, 103, 122, 0.35);
+  --card: #2e3033;
+  --img-bg: #2b2d30;
+  --accent: #b4c0da;
+  --accent-soft: rgba(97, 103, 122, 0.4);
   --ok: #9cc7ae;
   --ok-soft: rgba(156, 199, 174, 0.16);
   --warn: #e0b48a;
