@@ -4,13 +4,14 @@ import path from "node:path";
 
 export const SHARE_CARD_SIZE = { width: 1200, height: 630 };
 
+// Light theme from app/globals.css
 const C = {
-  bg: "#0b0e13",
-  text: "#e9edf2",
-  muted: "#949ca6",
-  subtle: "#737c88",
-  lineStrong: "rgba(255, 255, 255, 0.16)",
-  accent: "#d9a054",
+  bg: "#ffffff",
+  text: "#272829",
+  muted: "#4a4f5e",
+  subtle: "#565c6d",
+  lineStrong: "rgba(39, 42, 51, 0.24)",
+  accent: "#4f5670",
 };
 
 async function loadFont(file: string) {
@@ -43,9 +44,9 @@ function ScaleRule() {
 }
 
 export async function renderShareCard(subline: string) {
-  const [sora, sans, mono] = await Promise.all([
-    loadFont("sora-500.ttf"),
-    loadFont("plex-sans-400.ttf"),
+  const [bold, sans, mono] = await Promise.all([
+    loadFont("texgyreheros-bold.otf"),
+    loadFont("texgyreheros-regular.otf"),
     loadFont("plex-mono-400.ttf"),
   ]);
 
@@ -71,7 +72,7 @@ export async function renderShareCard(subline: string) {
               paddingBottom: 20,
             }}
           >
-            <div style={{ fontFamily: "Sora", fontSize: 26, color: C.text }}>
+            <div style={{ fontFamily: "Heros", fontWeight: 700, fontSize: 26, color: C.text }}>
               Ellyess Benmoufok
             </div>
             <div
@@ -102,7 +103,7 @@ export async function renderShareCard(subline: string) {
           <div
             style={{
               display: "flex",
-              fontFamily: "Sora",
+              fontFamily: "Heros",
               fontSize: 84,
               letterSpacing: -2,
               color: C.text,
@@ -113,7 +114,7 @@ export async function renderShareCard(subline: string) {
           </div>
           <div
             style={{
-              fontFamily: "IBM Plex Sans",
+              fontFamily: "Heros",
               fontSize: 27,
               color: C.muted,
               marginTop: 22,
@@ -133,8 +134,8 @@ export async function renderShareCard(subline: string) {
             paddingTop: 24,
           }}
         >
-          <div style={{ fontFamily: "IBM Plex Sans", fontSize: 21, color: C.muted }}>
-            Computational Science &amp; Data Science · Imperial
+          <div style={{ fontFamily: "Heros", fontSize: 21, color: C.muted }}>
+            PhD in Computational Science &amp; Data Science · Imperial College London
           </div>
           <div
             style={{
@@ -152,8 +153,8 @@ export async function renderShareCard(subline: string) {
     {
       ...SHARE_CARD_SIZE,
       fonts: [
-        { name: "Sora", data: sora, weight: 500 as const, style: "normal" as const },
-        { name: "IBM Plex Sans", data: sans, weight: 400 as const, style: "normal" as const },
+        { name: "Heros", data: sans, weight: 400 as const, style: "normal" as const },
+        { name: "Heros", data: bold, weight: 700 as const, style: "normal" as const },
         { name: "IBM Plex Mono", data: mono, weight: 400 as const, style: "normal" as const },
       ],
     },
