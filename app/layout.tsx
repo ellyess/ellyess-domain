@@ -81,6 +81,8 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 /* Structured data so search engines and recruiter tools read the
    profile as a person with a role, not an anonymous page. */
 const personJsonLd = {
@@ -119,18 +121,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        {/* Apply a stored theme choice before first paint */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased [font-family:var(--font-sans)]">
-        <div className="mx-auto max-w-[1060px] px-6">
+        <div className="shell">
           <Nav />
-          {children}
-          <Footer />
+          <div className="min-w-0">
+            {children}
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

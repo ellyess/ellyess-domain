@@ -23,6 +23,11 @@ export type Project = {
   description: string;
   tech: string;
   links: { label: string; href: string }[];
+  /* Three-line summary at the top: problem, what I built, result */
+  brief: { label: string; text: string }[];
+  role: string;
+  status: { tone: "ok" | "neutral" | "warn"; text: string };
+  facts?: { label: string; value: string }[];
   sections: CaseSection[];
 };
 
@@ -41,6 +46,21 @@ export const projects: Project[] = [
       { label: "GitHub", href: "https://github.com/ellyess/PyVWF" },
       { label: "Zenodo DOI", href: "https://doi.org/10.5281/zenodo.21236619" },
       { label: "Method paper", href: "https://doi.org/10.1016/j.energy.2024.133759" },
+    ],
+    brief: [
+      { label: "Problem", text: "ERA5's wind speeds are off by different amounts in different places and seasons, so one national correction factor leaves the local errors in place." },
+      { label: "What I built", text: "A Python library that learns corrections from observed generation, at the finest resolution the data supports, and maps them onto the ERA5 grid." },
+      { label: "Result", text: "16 to 79% less capacity-factor error across 12 European countries in the PhD; since then, validated in fifteen regions on four continents." },
+    ],
+    role: "Author and maintainer. I wrote the method and its first validation by hand during the PhD. Since mid-2026 Claude Code writes much of the code under my direction; the scientific decisions and releases are mine.",
+    status: { tone: "ok", text: "Maintained · v0.6.0" },
+    facts: [
+      { label: "Release", value: "v0.6.0" },
+      { label: "Tests", value: "963" },
+      { label: "Python", value: "3.10 – 3.13" },
+      { label: "Checks", value: "ruff · mypy" },
+      { label: "Licence", value: "BSD-3-Clause" },
+      { label: "Docs", value: "Sphinx, -W" },
     ],
     sections: [
       {
@@ -129,6 +149,13 @@ export const projects: Project[] = [
       "Case study: extending PyPSA-Eur with bias-corrected wind, density-tiered wake losses and offshore spatial splitting, validated against ENTSO-E 2023 generation.",
     tech: "Python · PyPSA · Atlite · Snakemake · Gurobi · GeoPandas · Xarray · pytest",
     links: [{ label: "GitHub", href: "https://github.com/ellyess/pypsa-eur-wind" }],
+    brief: [
+      { label: "Problem", text: "Energy system models plan decades of investment on wind inputs that are rarely questioned." },
+      { label: "What I built", text: "A public fork of PyPSA-Eur that adds bias-corrected wind, density-tiered wake losses and a way to split offshore regions without redrawing the grid." },
+      { label: "Result", text: "Wake losses cut optimal offshore wind capacity by 36 to 46% at every scale tested; against ENTSO-E 2023 generation, the corrected model improved 9 of 11 country and technology series." },
+    ],
+    role: "The three extensions and the analysis layer are mine. The physical wake-loss relation came from a postdoctoral colleague; the density-tiered form and its implementation in PyPSA-Eur are mine.",
+    status: { tone: "neutral", text: "Complete · PhD Part II" },
     sections: [
       {
         title: "Problem",
@@ -218,6 +245,13 @@ export const projects: Project[] = [
       "Case study: a pre-registered, physics-informed model for transferring wind bias corrections to unseen regions, with failed predictions published alongside the results.",
     tech: "Python · PyTorch · differentiable forward operator · pre-registration · leave-one-region-out validation",
     links: [{ label: "Code in PyVWF", href: "https://github.com/ellyess/PyVWF" }],
+    brief: [
+      { label: "Problem", text: "Bias corrections only exist where there is observed generation to learn from." },
+      { label: "What I built", text: "A constrained, physics-informed model, with its gates and thirteen predictions fixed before each run." },
+      { label: "Result", text: "As registered, it beat uncorrected ERA5 in all five held-out regions, with thin margins in two. Seven predictions failed and are published as failures." },
+    ],
+    role: "Independent post-PhD research inside PyVWF. Not a thesis chapter.",
+    status: { tone: "warn", text: "Experimental · a Europe-wide follow-up was withdrawn on 25 Oct 2026" },
     sections: [
       {
         title: "Context",

@@ -9,7 +9,7 @@ export function ProfileLinks({ className = "" }: { className?: string }) {
           href={profile.href}
           target="_blank"
           rel="noreferrer"
-          className="eyebrow transition-colors hover:text-[var(--accent)]"
+          className="more eyebrow !text-[var(--muted)] hover:!text-[var(--accent)]"
         >
           {profile.label}
         </a>

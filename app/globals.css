@@ -1,20 +1,76 @@
 @import "tailwindcss";
 
+/* Direction C: light by default, dark on request or by system setting.
+   Layout follows a quiet side-nav-and-sections pattern; motion is limited
+   to the wind field and small hover responses. */
+
 :root {
-  /* Blue-hour palette: cold night-air dark, beacon-amber accent.
-     The accent is the renewable-energy hint: the aviation light on a
-     turbine nacelle at dusk. Keep it muted, never neon. */
-  --bg: #0b0e13;
-  --text: #e9edf2;
-  --muted: #949ca6;
-  /* Small-text tier: ~4.6:1 on --bg for WCAG AA */
-  --subtle: #737c88;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --accent: #d9a054;
-  --accent-soft: rgba(217, 160, 84, 0.09);
-  --accent-line: rgba(217, 160, 84, 0.35);
-  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.02 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --bg: #f6f7f9;
+  --text: #15191f;
+  --muted: #4f5966;
+  /* Small-text tier: about 5.3:1 on --bg */
+  --subtle: #5c6672;
+  --line: rgba(21, 25, 31, 0.12);
+  --line-strong: rgba(21, 25, 31, 0.28);
+  --card: #ffffff;
+  --img-bg: #ffffff;
+  --accent: #9a5f17;
+  --accent-soft: rgba(154, 95, 23, 0.1);
+  --ok: #2f7a57;
+  --ok-soft: rgba(47, 122, 87, 0.12);
+  --warn: #a3601a;
+  --stream: #7d93ab;
+  --dot: rgba(21, 25, 31, 0.14);
+  --shadow: rgba(10, 20, 40, 0.28);
+  --fig-filter: none;
+  --fig-blend: normal;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1117;
+    --text: #e8ecf1;
+    --muted: #a3acb7;
+    --subtle: #8d96a1;
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.26);
+    --card: #141a22;
+    --img-bg: #0f141b;
+    --accent: #e0a85e;
+    --accent-soft: rgba(224, 168, 94, 0.12);
+    --ok: #7fb59a;
+    --ok-soft: rgba(127, 181, 154, 0.18);
+    --warn: #e0a35f;
+    --stream: #8fa8c4;
+    --dot: rgba(255, 255, 255, 0.1);
+    --shadow: rgba(0, 0, 0, 0.6);
+    --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
+    --fig-blend: screen;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --text: #e8ecf1;
+  --muted: #a3acb7;
+  --subtle: #8d96a1;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.26);
+  --card: #141a22;
+  --img-bg: #0f141b;
+  --accent: #e0a85e;
+  --accent-soft: rgba(224, 168, 94, 0.12);
+  --ok: #7fb59a;
+  --ok-soft: rgba(127, 181, 154, 0.18);
+  --warn: #e0a35f;
+  --stream: #8fa8c4;
+  --dot: rgba(255, 255, 255, 0.1);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --fig-filter: invert(1) hue-rotate(180deg) saturate(1.2);
+  --fig-blend: screen;
+  color-scheme: dark;
 }
 
 html,
@@ -26,9 +82,7 @@ body {
 }
 
 body {
-  /* Faint film grain: matte instrument housing, not gloss */
-  background-image: var(--grain);
-  background-size: 160px 160px;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 * {
@@ -41,148 +95,192 @@ body {
 }
 
 :focus-visible {
-  outline: 1.5px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
+  border-radius: 2px;
 }
-
-/* —— Typography ——
-   Layered as components so Tailwind utility classes (e.g. text-[var(--subtle)])
-   can override the defaults set here. */
 
 @layer components {
+  /* Small uppercase label in the mono face */
   .eyebrow {
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--subtle);
   }
 
-  /* Display face (Sora) is reserved for the name and wordmark: the one
-     typographic exception the document allows itself. */
   .display {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
-  }
-
-  .display-light {
-    font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.018em;
   }
+
+  /* Short rule above each heading */
+  .tick {
+    display: block;
+    width: 72px;
+    height: 1px;
+    background: var(--text);
+  }
 }
 
-/* —— Graduation rule: the one structural motif ——
-   A measuring-scale tick line. Pure CSS, no imagery. */
+/* —— Shell: side nav beside the content, a top bar on phones —— */
 
-.scale-rule {
-  height: 7px;
-  border-top: 1px solid var(--line-strong);
-  background: repeating-linear-gradient(
-    90deg,
-    var(--line-strong) 0,
-    var(--line-strong) 1px,
-    transparent 1px,
-    transparent 28px
-  );
-  background-size: auto 4px;
-  background-repeat: repeat-x;
+.shell {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 64px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 56px 48px 72px;
 }
 
-.scale-rule--up {
-  border-top: none;
-  border-bottom: 1px solid var(--line-strong);
-  background-position: bottom;
+.side {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-/* —— Ruled row: hover grows an accent hairline along the top rule —— */
-
-.rule-row {
-  position: relative;
-  border-top: 1px solid var(--line);
+.side-link {
+  display: block;
+  padding: 5px 0;
+  transition: color 0.2s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.rule-row::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -1px;
-  height: 1px;
-  width: 0;
-  background: var(--accent-line);
-  transition: width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+.side-link:hover {
+  transform: translateX(4px);
+  color: var(--text);
 }
 
-.rule-row:hover::before {
-  width: 100%;
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding: 24px 20px 56px;
+  }
+
+  .side {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 18px;
+  }
+
+  .side-link {
+    padding: 10px 0;
+  }
+
+  .side-link:hover {
+    transform: none;
+  }
 }
 
-/* —— Link affordance —— */
+/* —— Hero words: underlined links that thicken on hover —— */
 
-.link-arrow {
-  position: relative;
+.word {
+  text-decoration: none;
+  background-image: linear-gradient(var(--line-strong), var(--line-strong));
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.35s ease;
+}
+
+.word:hover {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100% 4px;
+}
+
+/* —— Cards lift with a small spring —— */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px -16px var(--shadow);
+}
+
+.card .thumb img {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .thumb img {
+  transform: scale(1.03);
+}
+
+.more {
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.more:hover {
   color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 180ms ease;
 }
 
-.link-arrow::after {
-  content: "→";
-  transition: transform 180ms ease;
+.more .arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.link-arrow:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.more:hover .arrow {
+  transform: translateX(4px);
 }
 
-.link-arrow:hover::after {
-  transform: translateX(3px);
+/* Thesis figures are drawn on white; in dark mode they are inverted and
+   screened onto the page until they are redrawn in the site palette. */
+.fig {
+  filter: var(--fig-filter);
+  mix-blend-mode: var(--fig-blend);
 }
 
-/* —— Hero entrance (staggered rise) —— */
+/* —— Wind field: dashes flowing along streamlines —— */
 
-@keyframes heroRise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
+@keyframes flow {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    stroke-dashoffset: -1000;
   }
 }
 
-.hero-rise {
-  opacity: 0;
-  animation: heroRise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-/* The two-tone name reads as the visual centrepiece */
-.hero-name {
-  display: block;
-  line-height: 0.98;
-}
-
-.hero-name .given {
-  display: block;
-}
-
-.hero-name .family {
-  display: block;
+.streak {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 46 954;
+  animation: flow linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-rise {
+  .streak {
     animation: none;
-    opacity: 1;
+    stroke-dasharray: none;
+    opacity: 0.35;
+  }
+
+  .card,
+  .card .thumb img,
+  .side-link,
+  .more .arrow,
+  .word,
+  body {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
   }
 }

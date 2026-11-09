@@ -20,65 +20,114 @@ export const contact = {
   eligibility: "UK right to work, no sponsorship needed",
 };
 
-/* Headline figures. Each one is tied to its configuration in the text
-   around it; do not quote these anywhere without that context. */
-export const figures = [
+export const lastUpdated = "9 November 2026";
+
+/* Featured on the home page. Thumbnails are either a thesis figure or a
+   small drawn tile; every status line is checked against the profile. */
+export type Thumb =
+  | { kind: "image"; src: string; width: number; height: number; alt: string }
+  | { kind: "regions" }
+  | { kind: "catalogue" };
+
+export type Featured = {
+  href: string;
+  external?: boolean;
+  kicker: string;
+  title: string;
+  summary: string;
+  status: { tone: "ok" | "neutral" | "warn"; label: string; detail: string };
+  thumb: Thumb;
+};
+
+export const featured: Featured[] = [
   {
-    value: "1,729",
-    label: "Control points across 12 European countries used to train and validate the correction",
+    href: "/work/pyvwf",
+    kicker: "Library · 2022 – now",
+    title: "PyVWF",
+    summary:
+      "Corrects ERA5 wind speeds place by place and season by season, learned from observed generation. Validated in fifteen regions on four continents.",
+    status: { tone: "ok", label: "Maintained", detail: "v0.6.0 · 963 tests · Zenodo DOI" },
+    thumb: {
+      kind: "image",
+      src: "/work/control-points.png",
+      width: 1263,
+      height: 766,
+      alt: "Maps of Europe showing wind correction factors at 1,729 observed sites",
+    },
   },
   {
-    value: "−36%",
-    label: "NRMSE against ENTSO-E 2023 generation, improving 9 of 11 country and technology series",
+    href: "/work/pypsa-eur-wind",
+    kicker: "PyPSA-Eur fork · PhD",
+    title: "How wind representation moves energy system plans",
+    summary:
+      "Wake losses cut optimal offshore wind capacity by 36 to 46% at every scale tested, and resolved bias correction moved system cost twice as much as uniform scaling.",
+    status: { tone: "neutral", label: "Complete", detail: "validated against ENTSO-E 2023" },
+    thumb: {
+      kind: "image",
+      src: "/work/region-splitting.png",
+      width: 1263,
+      height: 852,
+      alt: "The North Sea region split into progressively smaller subregions",
+    },
   },
   {
-    value: "963",
-    label: "Test functions in the PyVWF v0.6.0 release, run in CI with ruff and mypy",
+    href: "https://ellyess.github.io/wind-generation-sources/",
+    external: true,
+    kicker: "Open data · Nov 2026",
+    title: "Wind Generation Sources",
+    summary:
+      "Where to find observed wind generation data in 164 countries, with each source's licence and the known traps in its data. Built with Claude Code.",
+    status: { tone: "ok", label: "Live", detail: "154 sources · 15 reviewed by me so far" },
+    thumb: { kind: "catalogue" },
   },
   {
-    value: "3",
-    label: "Peer-reviewed papers, one as first author",
+    href: "/work/physics-informed-correction",
+    kicker: "Research · experimental",
+    title: "Corrections where there are no observations",
+    summary:
+      "A physics-informed model with its tests fixed before each run. Seven of thirteen predictions failed and are published as failures.",
+    status: { tone: "warn", label: "Experimental", detail: "a Europe-wide follow-up was withdrawn" },
+    thumb: { kind: "regions" },
   },
 ];
 
-/* Role shapes the record supports, each backed by named evidence. */
-export const fits = [
+/* Short list on the home page; the full list is on /code. */
+export const codeAndData = [
+  { kind: "Python", title: "PyVWF", note: "bias-corrected wind power from reanalysis", tag: "BSD-3", href: "https://github.com/ellyess/PyVWF" },
+  { kind: "Data", title: "Wind Generation Sources", note: "catalogue of observed wind generation data", tag: "CC BY 4.0", href: "https://github.com/ellyess/wind-generation-sources" },
+  { kind: "Fork", title: "pypsa-eur-wind", note: "wake losses and offshore splitting in PyPSA-Eur", tag: "Fork", href: "https://github.com/ellyess/pypsa-eur-wind" },
+  { kind: "Risk", title: "era5-windstorm-oasis", note: "the Oasis LMF example model, reproduced, with a sensitivity study", tag: "Repo", href: "https://github.com/ellyess/era5-windstorm-oasis" },
+];
+
+export const experience = [
   {
-    role: "Wind resource & energy yield",
-    summary:
-      "Corrected ERA5 reanalysis wind against observed generation and turned it into capacity factors, with wake losses and spatial resolution treated as modelling choices that move results.",
-    evidence:
-      "Corrections from 1,729 control points in 12 countries, gridded over 23,989 ERA5 cells; capacity-factor MAE cut by 16 to 79% against uncorrected ERA5.",
+    when: "2021 – 2026",
+    role: "PhD Researcher",
+    org: "Imperial College London",
+    note: "Wind resource modelling and energy system representation. EPSRC and Shell Industrial CASE award; co-supervised an MSc project that became a paper in Energy.",
   },
   {
-    role: "Weather & climate data verification",
-    summary:
-      "Owning the question of how far a dataset can be trusted, and for which decision. Bias, error decomposition and validation designs that do not leak.",
-    evidence:
-      "Spatial and leave-one-country-out cross-validation; regions the observations could not support were masked, not published.",
+    when: "2021",
+    role: "Data Science Intern",
+    org: "Shell",
+    note: "A proof of concept for downscaling CMIP6 climate projections for renewable energy, checked against offshore wind lidar.",
   },
   {
-    role: "Model validation & climate risk",
-    summary:
-      "Pre-registered tests, failed predictions published as failures, and the simpler model kept when the complex one does not earn its place.",
-    evidence:
-      "Ran the Oasis LMF PiWind catastrophe model end to end with an exposure sensitivity study on AAL and EP curves.",
+    when: "2020 – 2021",
+    role: "Research App Developer",
+    org: "Imperial College London",
+    note: "Land-cover and seabed classification from Landsat and Sentinel-2 imagery for I-Hex, the Island Health Explorer.",
   },
   {
-    role: "Geospatial & earth observation",
-    summary:
-      "Gridded climate fields, interpolation and projections, and supervised classification of satellite imagery.",
-    evidence:
-      "Credited App Developer on I-Hex, the Island Health Explorer: land-cover and benthic classification over Maldivian atolls in Google Earth Engine.",
-  },
-  {
-    role: "Research software engineering",
-    summary:
-      "Turning research code into packages other people can install, test, cite and extend, and working inside other people's codebases to their conventions.",
-    evidence:
-      "PyVWF: CI, typing, Sphinx docs built with warnings as errors, Docker, semantic versioning and a Zenodo DOI. A public fork of PyPSA-Eur.",
+    when: "2019",
+    role: "Data Scientist",
+    org: "Link Humans",
+    note: "Python scrapers, pipelines and text classification for employer-branding reports.",
   },
 ];
+
+export const education =
+  "MSc Applied Computational Science and Engineering, Imperial College London (Distinction) · BSc Physics, University of Surrey (First Class Honours)";
 
 export const work: Item[] = [
   {
@@ -174,6 +223,8 @@ export const publications = [
     year: "2024",
     short: "Energy · 2024",
     role: "First author",
+    journal: "Energy",
+    finding: "A place-by-place, season-by-season correction for reanalysis wind, tested on a held-out year that included 1,445 new turbines.",
     note:
       "Introduces the granular spatial and temporal bias-correction method that PyVWF implements, trained on Danish turbines and validated on a held-out year with 1,445 new turbines.",
     url: "https://doi.org/10.1016/j.energy.2024.133759",
@@ -186,6 +237,8 @@ export const publications = [
     year: "2026",
     short: "Energy Conv. & Mgmt · 2026",
     role: "Co-author",
+    journal: "Energy Conversion and Management",
+    finding: "High-resolution bias correction of reanalysis wind for UK wind energy.",
     note: "Applies high-resolution reanalysis bias correction to UK wind energy.",
     url: "https://doi.org/10.1016/j.enconman.2026.121066",
   },
@@ -196,6 +249,8 @@ export const publications = [
     year: "2022",
     short: "Applied Sciences · 2022",
     role: "Co-author",
+    journal: "Applied Sciences",
+    finding: "Wasserstein GANs for multi-output regression, grown out of my MSc dissertation.",
     note: "Grew out of my MSc dissertation on Wasserstein GANs for multi-output regression, benchmarked against Gaussian process regression.",
     url: "https://doi.org/10.3390/app12189209",
   },

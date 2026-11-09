@@ -2,50 +2,44 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
-  { href: "/research", label: "Research" },
-  { href: "/code", label: "Code" },
+  { href: "/#work", label: "Work", match: "/work" },
+  { href: "/research", label: "Research", match: "/research" },
+  { href: "/code", label: "Code & data", match: "/code" },
+  { href: "/#experience", label: "Experience", match: null },
 ];
 
 export function Nav() {
   const pathname = usePathname();
 
   return (
-    <>
-      <nav className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pt-7 pb-5">
-        <Link
-          href="/"
-          className="display text-[15px] text-[var(--text)] transition-colors hover:text-[var(--accent)]"
-        >
-          Ellyess Benmoufok
-        </Link>
-        <div className="flex items-baseline gap-x-7">
-          {links.map((link) => {
-            const isActive =
-              pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`eyebrow transition-colors hover:text-[var(--text)] ${
-                  isActive ? "text-[var(--accent)]" : "text-[var(--muted)]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <a
-            href="/Ellyess_Benmoufok_CV.pdf"
-            className="eyebrow text-[var(--accent)] transition-colors hover:text-[var(--text)]"
+    <aside className="side" aria-label="Site">
+      <Link href="/" className="eyebrow pb-3 font-medium leading-[1.6] !text-[var(--text)] max-[860px]:w-full max-[860px]:pb-1">
+        Ellyess <br className="max-[860px]:hidden" />
+        Benmoufok
+      </Link>
+      <span className="tick mb-2.5 mt-0.5 max-[860px]:hidden" aria-hidden />
+      {links.map((link) => {
+        const active = link.match ? pathname.startsWith(link.match) : false;
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            aria-current={active ? "page" : undefined}
+            className={`side-link eyebrow ${active ? "!text-[var(--text)]" : "!text-[var(--muted)]"}`}
           >
-            CV
-          </a>
-        </div>
-      </nav>
-      <div className="scale-rule mb-14 md:mb-16" aria-hidden />
-    </>
+            {link.label}
+          </Link>
+        );
+      })}
+      <a href="/Ellyess_Benmoufok_CV.pdf" className="side-link eyebrow !text-[var(--accent)]">
+        CV ↓
+      </a>
+      <div className="mt-4 max-[860px]:ml-auto max-[860px]:mt-0">
+        <ThemeToggle />
+      </div>
+    </aside>
   );
 }
